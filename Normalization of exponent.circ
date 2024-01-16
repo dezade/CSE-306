@@ -22,17 +22,14 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <tool name="Multiplexer">
       <a name="facing" val="south"/>
       <a name="width" val="4"/>
-      <a name="enable" val="false"/>
     </tool>
     <tool name="Demultiplexer">
       <a name="select" val="3"/>
       <a name="width" val="3"/>
-      <a name="enable" val="false"/>
     </tool>
     <tool name="Decoder">
       <a name="facing" val="west"/>
       <a name="select" val="4"/>
-      <a name="enable" val="false"/>
     </tool>
   </lib>
   <lib desc="#Arithmetic" name="4">
@@ -159,10 +156,10 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(790,180)" to="(980,180)"/>
     <wire from="(790,310)" to="(810,310)"/>
     <wire from="(860,310)" to="(1260,310)"/>
-    <comp lib="0" loc="(810,310)" name="Splitter">
-      <a name="fanout" val="11"/>
-      <a name="incoming" val="11"/>
-      <a name="appear" val="center"/>
+    <comp lib="0" loc="(250,480)" name="Pin">
+      <a name="width" val="11"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="GREATER OUTPUT FROM TASK1"/>
     </comp>
     <comp lib="4" loc="(550,490)" name="Adder">
       <a name="width" val="11"/>
@@ -172,40 +169,35 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="output" val="true"/>
       <a name="label" val="UNDERFLOW"/>
     </comp>
-    <comp lib="4" loc="(740,180)" name="Adder">
+    <comp lib="1" loc="(700,490)" name="NOT Gate">
       <a name="width" val="11"/>
     </comp>
-    <comp lib="1" loc="(240,680)" name="NOT Gate"/>
-    <comp lib="1" loc="(860,310)" name="AND Gate">
-      <a name="inputs" val="11"/>
+    <comp lib="0" loc="(810,310)" name="Splitter">
+      <a name="fanout" val="11"/>
+      <a name="incoming" val="11"/>
+      <a name="appear" val="center"/>
     </comp>
-    <comp lib="0" loc="(660,150)" name="Ground">
-      <a name="facing" val="north"/>
+    <comp lib="0" loc="(980,180)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="11"/>
+      <a name="label" val="EXP(RESULT)"/>
+    </comp>
+    <comp lib="1" loc="(360,500)" name="NOT Gate">
       <a name="width" val="11"/>
     </comp>
-    <comp lib="0" loc="(250,570)" name="Pin">
-      <a name="width" val="11"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="SHAMT FROM TASK5"/>
-    </comp>
-    <comp lib="0" loc="(530,430)" name="Power"/>
     <comp lib="0" loc="(820,490)" name="Splitter">
       <a name="fanout" val="11"/>
       <a name="incoming" val="11"/>
       <a name="appear" val="center"/>
     </comp>
-    <comp lib="0" loc="(250,480)" name="Pin">
-      <a name="width" val="11"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="GREATER OUTPUT FROM TASK1"/>
-    </comp>
-    <comp lib="1" loc="(360,500)" name="NOT Gate">
-      <a name="width" val="11"/>
-    </comp>
-    <comp lib="1" loc="(700,490)" name="NOT Gate">
-      <a name="width" val="11"/>
-    </comp>
     <comp lib="1" loc="(700,580)" name="NOT Gate"/>
+    <comp lib="0" loc="(720,80)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Cin of Final Adder"/>
+    </comp>
+    <comp lib="0" loc="(530,430)" name="Power"/>
     <comp lib="1" loc="(1090,500)" name="OR Gate">
       <a name="inputs" val="12"/>
     </comp>
@@ -214,16 +206,20 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="output" val="true"/>
       <a name="label" val="OVERFLOW"/>
     </comp>
-    <comp lib="0" loc="(980,180)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="11"/>
-      <a name="label" val="EXP(RESULT)"/>
+    <comp lib="1" loc="(860,310)" name="AND Gate">
+      <a name="inputs" val="11"/>
     </comp>
-    <comp lib="0" loc="(720,80)" name="Pin">
-      <a name="facing" val="south"/>
+    <comp lib="0" loc="(660,150)" name="Ground">
+      <a name="facing" val="north"/>
+      <a name="width" val="11"/>
+    </comp>
+    <comp lib="4" loc="(740,180)" name="Adder">
+      <a name="width" val="11"/>
+    </comp>
+    <comp lib="0" loc="(250,570)" name="Pin">
+      <a name="width" val="11"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="Cin of Final Adder"/>
+      <a name="label" val="SHAMT FROM TASK5"/>
     </comp>
   </circuit>
 </project>
