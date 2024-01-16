@@ -111,7 +111,6 @@
     <a name="clabelfont" val="Dialog plain 12"/>
     <a name="clabelcolor" val="#ff56c1"/>
     <wire from="(760,400)" to="(810,400)"/>
-    <wire from="(270,790)" to="(320,790)"/>
     <wire from="(680,390)" to="(720,390)"/>
     <wire from="(550,650)" to="(550,690)"/>
     <wire from="(650,410)" to="(650,710)"/>
@@ -150,7 +149,6 @@
     <wire from="(1110,270)" to="(1210,270)"/>
     <wire from="(1030,300)" to="(1070,300)"/>
     <wire from="(1090,290)" to="(1210,290)"/>
-    <wire from="(1040,340)" to="(1210,340)"/>
     <wire from="(1160,220)" to="(1210,220)"/>
     <wire from="(1130,250)" to="(1210,250)"/>
     <wire from="(1030,320)" to="(1050,320)"/>
@@ -160,7 +158,6 @@
     <wire from="(1030,180)" to="(1190,180)"/>
     <wire from="(1030,210)" to="(1160,210)"/>
     <wire from="(1180,200)" to="(1210,200)"/>
-    <wire from="(1030,330)" to="(1040,330)"/>
     <wire from="(1060,320)" to="(1210,320)"/>
     <wire from="(1030,200)" to="(1170,200)"/>
     <wire from="(1100,280)" to="(1210,280)"/>
@@ -172,7 +169,6 @@
     <wire from="(1030,170)" to="(1210,170)"/>
     <wire from="(1030,130)" to="(1210,130)"/>
     <wire from="(1030,110)" to="(1210,110)"/>
-    <wire from="(1040,330)" to="(1040,340)"/>
     <wire from="(1030,220)" to="(1150,220)"/>
     <wire from="(1170,210)" to="(1210,210)"/>
     <wire from="(1030,240)" to="(1130,240)"/>
@@ -210,87 +206,96 @@
     <wire from="(830,710)" to="(830,770)"/>
     <wire from="(650,710)" to="(830,710)"/>
     <wire from="(830,770)" to="(860,770)"/>
+    <wire from="(300,790)" to="(320,790)"/>
+    <wire from="(170,790)" to="(260,790)"/>
+    <wire from="(1140,340)" to="(1140,360)"/>
+    <wire from="(1140,340)" to="(1210,340)"/>
+    <comp lib="0" loc="(1280,530)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="label" val="OVERFLOW"/>
+    </comp>
+    <comp lib="0" loc="(1010,340)" name="Splitter">
+      <a name="fanout" val="32"/>
+      <a name="incoming" val="32"/>
+    </comp>
+    <comp lib="0" loc="(1190,440)" name="Ground">
+      <a name="width" val="11"/>
+    </comp>
+    <comp lib="0" loc="(300,790)" name="Bit Extender">
+      <a name="in_width" val="5"/>
+      <a name="out_width" val="11"/>
+    </comp>
     <comp lib="1" loc="(1290,720)" name="OR Gate"/>
+    <comp lib="0" loc="(270,700)" name="Pin">
+      <a name="width" val="11"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="GREATER EXPONENT"/>
+    </comp>
+    <comp lib="4" loc="(760,400)" name="Adder">
+      <a name="width" val="11"/>
+    </comp>
+    <comp lib="0" loc="(860,770)" name="Splitter">
+      <a name="fanout" val="11"/>
+      <a name="incoming" val="11"/>
+    </comp>
+    <comp lib="0" loc="(1140,360)" name="Ground"/>
+    <comp lib="0" loc="(170,790)" name="Pin">
+      <a name="width" val="5"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="LEFT SHAMT FROM FRACNORM"/>
+    </comp>
     <comp lib="1" loc="(920,710)" name="NOR Gate">
       <a name="inputs" val="11"/>
+    </comp>
+    <comp lib="1" loc="(900,800)" name="NOT Gate"/>
+    <comp lib="0" loc="(740,300)" name="Pin">
+      <a name="facing" val="south"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="Cin of Final Adder"/>
+    </comp>
+    <comp lib="1" loc="(380,720)" name="NOT Gate">
+      <a name="width" val="11"/>
     </comp>
     <comp lib="0" loc="(830,530)" name="Splitter">
       <a name="fanout" val="11"/>
       <a name="incoming" val="11"/>
       <a name="appear" val="center"/>
     </comp>
-    <comp lib="0" loc="(680,370)" name="Ground">
-      <a name="facing" val="north"/>
-      <a name="width" val="11"/>
-    </comp>
-    <comp lib="0" loc="(270,700)" name="Pin">
-      <a name="width" val="11"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="GREATER EXPONENT"/>
-    </comp>
-    <comp lib="1" loc="(1250,180)" name="NOR Gate">
-      <a name="inputs" val="32"/>
-    </comp>
-    <comp lib="0" loc="(1190,440)" name="Ground">
-      <a name="width" val="11"/>
-    </comp>
-    <comp lib="4" loc="(760,400)" name="Adder">
-      <a name="width" val="11"/>
-    </comp>
-    <comp lib="0" loc="(740,300)" name="Pin">
-      <a name="facing" val="south"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="Cin of Final Adder"/>
-    </comp>
-    <comp lib="4" loc="(570,710)" name="Adder">
-      <a name="width" val="11"/>
-    </comp>
-    <comp lib="1" loc="(900,800)" name="NOT Gate"/>
-    <comp lib="0" loc="(1280,530)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="label" val="OVERFLOW"/>
-    </comp>
-    <comp lib="3" loc="(1280,410)" name="Multiplexer">
-      <a name="selloc" val="tr"/>
-      <a name="width" val="11"/>
-      <a name="enable" val="false"/>
-    </comp>
-    <comp lib="0" loc="(900,230)" name="Pin">
-      <a name="width" val="32"/>
-      <a name="tristate" val="false"/>
-      <a name="label" val="NORMALIZED 32 BIT SIGNIFICAND"/>
-    </comp>
-    <comp lib="0" loc="(550,650)" name="Power"/>
     <comp lib="0" loc="(1360,410)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="width" val="11"/>
       <a name="label" val="EXPONENT RESULT"/>
     </comp>
-    <comp lib="0" loc="(860,770)" name="Splitter">
-      <a name="fanout" val="11"/>
-      <a name="incoming" val="11"/>
+    <comp lib="1" loc="(880,530)" name="AND Gate">
+      <a name="inputs" val="11"/>
     </comp>
     <comp lib="0" loc="(1460,720)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="label" val="UNDERFLOW"/>
     </comp>
-    <comp lib="1" loc="(380,720)" name="NOT Gate">
+    <comp lib="1" loc="(1250,180)" name="NOR Gate">
+      <a name="inputs" val="32"/>
+    </comp>
+    <comp lib="4" loc="(570,710)" name="Adder">
       <a name="width" val="11"/>
     </comp>
-    <comp lib="1" loc="(880,530)" name="AND Gate">
-      <a name="inputs" val="11"/>
-    </comp>
-    <comp lib="0" loc="(1010,340)" name="Splitter">
-      <a name="fanout" val="32"/>
-      <a name="incoming" val="32"/>
-    </comp>
-    <comp lib="0" loc="(270,790)" name="Pin">
-      <a name="width" val="11"/>
+    <comp lib="0" loc="(550,650)" name="Power"/>
+    <comp lib="0" loc="(900,230)" name="Pin">
+      <a name="width" val="32"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="LEFT-SHAMT FROM FRACTION NORMALIZATION"/>
+      <a name="label" val="NORMALIZED 32 BIT SIGNIFICAND"/>
+    </comp>
+    <comp lib="3" loc="(1280,410)" name="Multiplexer">
+      <a name="selloc" val="tr"/>
+      <a name="width" val="11"/>
+      <a name="enable" val="false"/>
+    </comp>
+    <comp lib="0" loc="(680,370)" name="Ground">
+      <a name="facing" val="north"/>
+      <a name="width" val="11"/>
     </comp>
   </circuit>
 </project>

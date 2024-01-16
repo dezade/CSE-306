@@ -200,21 +200,8 @@
     <wire from="(1710,1600)" to="(1710,1640)"/>
     <wire from="(1520,1600)" to="(1710,1600)"/>
     <wire from="(1710,1600)" to="(2520,1600)"/>
-    <comp lib="0" loc="(2360,1720)" name="Pin">
-      <a name="facing" val="west"/>
-      <a name="output" val="true"/>
-      <a name="width" val="32"/>
-      <a name="label" val="Significand to be Shifted"/>
-    </comp>
-    <comp lib="0" loc="(1960,1480)" name="Pin">
-      <a name="width" val="32"/>
-      <a name="tristate" val="false"/>
-    </comp>
-    <comp lib="0" loc="(1980,1310)" name="Pin">
-      <a name="width" val="32"/>
-      <a name="tristate" val="false"/>
-    </comp>
-    <comp lib="4" loc="(2170,1470)" name="Adder">
+    <comp lib="1" loc="(2180,1560)" name="NOT Gate"/>
+    <comp lib="0" loc="(1500,1100)" name="Ground">
       <a name="width" val="32"/>
     </comp>
     <comp lib="3" loc="(2590,1400)" name="Multiplexer">
@@ -225,38 +212,53 @@
     <comp lib="1" loc="(2160,900)" name="XOR Gate">
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(1650,950)" name="Pin">
+    <comp lib="4" loc="(2130,1690)" name="Adder">
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(1520,1040)" name="Power">
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(2360,1720)" name="Pin">
+      <a name="facing" val="west"/>
+      <a name="output" val="true"/>
+      <a name="width" val="32"/>
+      <a name="label" val="Significand to be Shifted"/>
+    </comp>
+    <comp lib="1" loc="(1790,910)" name="XOR Gate"/>
+    <comp lib="4" loc="(2170,1470)" name="Adder">
+      <a name="width" val="32"/>
+    </comp>
+    <comp lib="0" loc="(1980,1310)" name="Pin">
+      <a name="width" val="32"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="SignB"/>
+      <a name="label" val="frac(B)"/>
+    </comp>
+    <comp lib="1" loc="(2690,1080)" name="XOR Gate">
+      <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(1650,900)" name="Pin">
       <a name="tristate" val="false"/>
-      <a name="label" val="SignA"/>
+      <a name="label" val="Sign(A)"/>
+    </comp>
+    <comp lib="1" loc="(2310,1540)" name="AND Gate"/>
+    <comp lib="0" loc="(1650,950)" name="Pin">
+      <a name="tristate" val="false"/>
+      <a name="label" val="Sign(B)"/>
+    </comp>
+    <comp lib="0" loc="(1960,1480)" name="Pin">
+      <a name="width" val="32"/>
+      <a name="tristate" val="false"/>
+      <a name="label" val="frac(A)"/>
     </comp>
     <comp lib="0" loc="(1950,1850)" name="Pin">
       <a name="facing" val="west"/>
       <a name="output" val="true"/>
       <a name="label" val="Cout"/>
     </comp>
-    <comp lib="1" loc="(2180,1560)" name="NOT Gate"/>
-    <comp lib="0" loc="(1520,1040)" name="Power">
-      <a name="width" val="32"/>
-    </comp>
     <comp lib="3" loc="(1730,1100)" name="Multiplexer">
       <a name="facing" val="south"/>
       <a name="width" val="32"/>
       <a name="enable" val="false"/>
     </comp>
-    <comp lib="0" loc="(1500,1100)" name="Ground">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="1" loc="(2690,1080)" name="XOR Gate">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="1" loc="(1790,910)" name="XOR Gate"/>
-    <comp lib="4" loc="(2130,1690)" name="Adder">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="1" loc="(2310,1540)" name="AND Gate"/>
   </circuit>
 </project>
