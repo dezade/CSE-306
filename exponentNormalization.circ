@@ -159,7 +159,7 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <comp lib="0" loc="(250,480)" name="Pin">
       <a name="width" val="11"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="GREATER OUTPUT FROM TASK1"/>
+      <a name="label" val="GREATER EXPONENT"/>
     </comp>
     <comp lib="4" loc="(550,490)" name="Adder">
       <a name="width" val="11"/>
@@ -219,7 +219,7 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <comp lib="0" loc="(250,570)" name="Pin">
       <a name="width" val="11"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="SHAMT FROM TASK5"/>
+      <a name="label" val="SHAMT FROM FRACTION NORMALIZATION"/>
     </comp>
   </circuit>
 </project>
