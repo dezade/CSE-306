@@ -106,71 +106,6 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <a name="clabelcolor" val="#000000"/>
     <wire from="(1720,920)" to="(1720,930)"/>
     <wire from="(1720,920)" to="(1750,920)"/>
-    <wire from="(1840,860)" to="(1940,860)"/>
-    <wire from="(1840,870)" to="(1940,870)"/>
-    <wire from="(1840,860)" to="(1840,870)"/>
-    <wire from="(1840,880)" to="(1940,880)"/>
-    <wire from="(1840,870)" to="(1840,880)"/>
-    <wire from="(1840,890)" to="(1940,890)"/>
-    <wire from="(1840,880)" to="(1840,890)"/>
-    <wire from="(1840,900)" to="(1940,900)"/>
-    <wire from="(1840,890)" to="(1840,900)"/>
-    <wire from="(1840,900)" to="(1840,910)"/>
-    <wire from="(1840,910)" to="(1940,910)"/>
-    <wire from="(1840,1170)" to="(1940,1170)"/>
-    <wire from="(1840,1160)" to="(1940,1160)"/>
-    <wire from="(1840,1160)" to="(1840,1170)"/>
-    <wire from="(1840,1150)" to="(1940,1150)"/>
-    <wire from="(1840,1150)" to="(1840,1160)"/>
-    <wire from="(1840,1140)" to="(1940,1140)"/>
-    <wire from="(1840,1140)" to="(1840,1150)"/>
-    <wire from="(1840,1130)" to="(1940,1130)"/>
-    <wire from="(1840,1130)" to="(1840,1140)"/>
-    <wire from="(1840,1120)" to="(1940,1120)"/>
-    <wire from="(1840,1120)" to="(1840,1130)"/>
-    <wire from="(1840,1110)" to="(1940,1110)"/>
-    <wire from="(1840,1110)" to="(1840,1120)"/>
-    <wire from="(1840,1100)" to="(1940,1100)"/>
-    <wire from="(1840,1100)" to="(1840,1110)"/>
-    <wire from="(1840,1090)" to="(1940,1090)"/>
-    <wire from="(1840,1090)" to="(1840,1100)"/>
-    <wire from="(1840,1080)" to="(1940,1080)"/>
-    <wire from="(1840,1080)" to="(1840,1090)"/>
-    <wire from="(1840,1070)" to="(1940,1070)"/>
-    <wire from="(1840,1070)" to="(1840,1080)"/>
-    <wire from="(1840,1060)" to="(1940,1060)"/>
-    <wire from="(1840,1060)" to="(1840,1070)"/>
-    <wire from="(1840,1050)" to="(1940,1050)"/>
-    <wire from="(1840,1050)" to="(1840,1060)"/>
-    <wire from="(1840,1040)" to="(1940,1040)"/>
-    <wire from="(1840,1040)" to="(1840,1050)"/>
-    <wire from="(1840,1030)" to="(1940,1030)"/>
-    <wire from="(1840,1030)" to="(1840,1040)"/>
-    <wire from="(1840,1020)" to="(1940,1020)"/>
-    <wire from="(1840,1020)" to="(1840,1030)"/>
-    <wire from="(1840,1010)" to="(1940,1010)"/>
-    <wire from="(1840,1010)" to="(1840,1020)"/>
-    <wire from="(1840,1000)" to="(1940,1000)"/>
-    <wire from="(1840,1000)" to="(1840,1010)"/>
-    <wire from="(1840,990)" to="(1940,990)"/>
-    <wire from="(1840,990)" to="(1840,1000)"/>
-    <wire from="(1840,970)" to="(1940,970)"/>
-    <wire from="(1840,980)" to="(1940,980)"/>
-    <wire from="(1840,970)" to="(1840,980)"/>
-    <wire from="(1840,980)" to="(1840,990)"/>
-    <wire from="(1840,960)" to="(1940,960)"/>
-    <wire from="(1840,960)" to="(1840,970)"/>
-    <wire from="(1840,950)" to="(1940,950)"/>
-    <wire from="(1840,950)" to="(1840,960)"/>
-    <wire from="(1840,940)" to="(1940,940)"/>
-    <wire from="(1840,940)" to="(1840,950)"/>
-    <wire from="(1840,930)" to="(1940,930)"/>
-    <wire from="(1840,930)" to="(1840,940)"/>
-    <wire from="(1840,920)" to="(1940,920)"/>
-    <wire from="(1840,910)" to="(1840,920)"/>
-    <wire from="(1840,920)" to="(1840,930)"/>
-    <wire from="(1960,850)" to="(2050,850)"/>
-    <wire from="(2050,850)" to="(2050,890)"/>
     <wire from="(2040,910)" to="(2040,1310)"/>
     <wire from="(2040,910)" to="(2120,910)"/>
     <wire from="(1980,1310)" to="(2040,1310)"/>
@@ -181,8 +116,6 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(1660,930)" to="(1660,950)"/>
     <wire from="(1650,950)" to="(1660,950)"/>
     <wire from="(1660,930)" to="(1720,930)"/>
-    <wire from="(1800,910)" to="(1800,1390)"/>
-    <wire from="(1800,910)" to="(1840,910)"/>
     <wire from="(1790,910)" to="(1800,910)"/>
     <wire from="(1800,1390)" to="(2150,1390)"/>
     <wire from="(2150,1560)" to="(2160,1560)"/>
@@ -198,75 +131,9 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(2110,1640)" to="(2110,1670)"/>
     <wire from="(2040,1640)" to="(2040,1680)"/>
     <wire from="(2040,1680)" to="(2090,1680)"/>
-    <wire from="(2510,1570)" to="(2510,1580)"/>
-    <wire from="(2510,1430)" to="(2510,1440)"/>
-    <wire from="(2510,1450)" to="(2510,1460)"/>
-    <wire from="(2510,1470)" to="(2510,1480)"/>
-    <wire from="(2510,1390)" to="(2510,1400)"/>
-    <wire from="(2510,1410)" to="(2510,1420)"/>
-    <wire from="(2510,1370)" to="(2510,1380)"/>
-    <wire from="(2510,1350)" to="(2510,1360)"/>
-    <wire from="(2510,1550)" to="(2510,1560)"/>
-    <wire from="(2510,1530)" to="(2510,1540)"/>
-    <wire from="(2510,1510)" to="(2510,1520)"/>
-    <wire from="(2510,1490)" to="(2510,1500)"/>
-    <wire from="(2510,1610)" to="(2510,1620)"/>
-    <wire from="(2510,1650)" to="(2510,1660)"/>
-    <wire from="(2510,1630)" to="(2510,1640)"/>
-    <wire from="(2510,1590)" to="(2510,1600)"/>
-    <wire from="(2510,1550)" to="(2610,1550)"/>
-    <wire from="(2510,1570)" to="(2610,1570)"/>
-    <wire from="(2510,1530)" to="(2610,1530)"/>
-    <wire from="(2510,1510)" to="(2610,1510)"/>
-    <wire from="(2510,1370)" to="(2610,1370)"/>
-    <wire from="(2510,1350)" to="(2610,1350)"/>
-    <wire from="(2510,1650)" to="(2610,1650)"/>
-    <wire from="(2510,1630)" to="(2610,1630)"/>
-    <wire from="(2510,1610)" to="(2610,1610)"/>
-    <wire from="(2510,1590)" to="(2610,1590)"/>
-    <wire from="(2510,1490)" to="(2610,1490)"/>
-    <wire from="(2510,1470)" to="(2610,1470)"/>
-    <wire from="(2510,1450)" to="(2610,1450)"/>
-    <wire from="(2510,1430)" to="(2610,1430)"/>
-    <wire from="(2510,1410)" to="(2610,1410)"/>
-    <wire from="(2510,1390)" to="(2610,1390)"/>
-    <wire from="(2510,1560)" to="(2510,1570)"/>
-    <wire from="(2510,1440)" to="(2510,1450)"/>
-    <wire from="(2510,1580)" to="(2510,1590)"/>
-    <wire from="(2510,1600)" to="(2510,1610)"/>
-    <wire from="(2510,1620)" to="(2510,1630)"/>
-    <wire from="(2510,1640)" to="(2510,1650)"/>
-    <wire from="(2510,1480)" to="(2510,1490)"/>
-    <wire from="(2510,1520)" to="(2510,1530)"/>
-    <wire from="(2510,1540)" to="(2510,1550)"/>
-    <wire from="(2510,1500)" to="(2510,1510)"/>
-    <wire from="(2510,1460)" to="(2510,1470)"/>
-    <wire from="(2510,1420)" to="(2510,1430)"/>
-    <wire from="(2510,1400)" to="(2510,1410)"/>
-    <wire from="(2510,1380)" to="(2510,1390)"/>
-    <wire from="(2510,1360)" to="(2510,1370)"/>
-    <wire from="(2510,1560)" to="(2610,1560)"/>
-    <wire from="(2510,1580)" to="(2610,1580)"/>
-    <wire from="(2510,1520)" to="(2610,1520)"/>
-    <wire from="(2510,1540)" to="(2610,1540)"/>
-    <wire from="(2510,1640)" to="(2610,1640)"/>
-    <wire from="(2510,1660)" to="(2610,1660)"/>
-    <wire from="(2510,1600)" to="(2610,1600)"/>
-    <wire from="(2510,1620)" to="(2610,1620)"/>
-    <wire from="(2510,1480)" to="(2610,1480)"/>
-    <wire from="(2510,1500)" to="(2610,1500)"/>
-    <wire from="(2510,1460)" to="(2610,1460)"/>
-    <wire from="(2510,1440)" to="(2610,1440)"/>
-    <wire from="(2510,1420)" to="(2610,1420)"/>
-    <wire from="(2510,1400)" to="(2610,1400)"/>
-    <wire from="(2510,1380)" to="(2610,1380)"/>
-    <wire from="(2510,1360)" to="(2610,1360)"/>
-    <wire from="(2390,1400)" to="(2390,1580)"/>
-    <wire from="(2390,1400)" to="(2510,1400)"/>
     <wire from="(2170,1470)" to="(2330,1470)"/>
     <wire from="(2330,1070)" to="(2330,1470)"/>
     <wire from="(2330,1070)" to="(2650,1070)"/>
-    <wire from="(2630,1090)" to="(2630,1340)"/>
     <wire from="(2630,1090)" to="(2650,1090)"/>
     <wire from="(2690,1080)" to="(2740,1080)"/>
     <wire from="(2060,1770)" to="(2740,1770)"/>
@@ -284,20 +151,64 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <wire from="(1940,1530)" to="(2150,1530)"/>
     <wire from="(1940,1850)" to="(1950,1850)"/>
     <wire from="(1940,1530)" to="(1940,1850)"/>
-    <wire from="(2050,890)" to="(2120,890)"/>
     <wire from="(1710,1640)" to="(2040,1640)"/>
-    <wire from="(1710,1640)" to="(1710,1660)"/>
     <wire from="(1650,900)" to="(1750,900)"/>
     <wire from="(2330,1720)" to="(2360,1720)"/>
     <wire from="(2330,1690)" to="(2330,1720)"/>
-    <comp lib="1" loc="(1790,910)" name="XOR Gate"/>
-    <comp lib="1" loc="(2690,1080)" name="XOR Gate">
+    <wire from="(1800,960)" to="(1800,1390)"/>
+    <wire from="(1800,910)" to="(1800,960)"/>
+    <wire from="(1690,960)" to="(1800,960)"/>
+    <wire from="(1650,990)" to="(1650,1040)"/>
+    <wire from="(1670,1000)" to="(1670,1100)"/>
+    <wire from="(1750,1200)" to="(2010,1200)"/>
+    <wire from="(2010,890)" to="(2010,1200)"/>
+    <wire from="(2010,890)" to="(2120,890)"/>
+    <wire from="(1730,1100)" to="(1730,1110)"/>
+    <wire from="(1750,1110)" to="(1750,1200)"/>
+    <wire from="(1730,1110)" to="(1750,1110)"/>
+    <wire from="(1690,1080)" to="(1710,1080)"/>
+    <wire from="(1670,1000)" to="(1720,1000)"/>
+    <wire from="(1740,990)" to="(1740,1070)"/>
+    <wire from="(1720,1000)" to="(1720,1070)"/>
+    <wire from="(1650,990)" to="(1740,990)"/>
+    <wire from="(1690,960)" to="(1690,1080)"/>
+    <wire from="(2390,1390)" to="(2390,1580)"/>
+    <wire from="(1520,1100)" to="(1520,1600)"/>
+    <wire from="(1500,1100)" to="(1520,1100)"/>
+    <wire from="(1520,1100)" to="(1670,1100)"/>
+    <wire from="(2520,1350)" to="(2520,1600)"/>
+    <wire from="(1540,1040)" to="(1540,1620)"/>
+    <wire from="(1540,1040)" to="(1650,1040)"/>
+    <wire from="(1520,1040)" to="(1540,1040)"/>
+    <wire from="(1540,1620)" to="(2540,1620)"/>
+    <wire from="(2540,1360)" to="(2540,1620)"/>
+    <wire from="(2630,1090)" to="(2630,1410)"/>
+    <wire from="(2520,1350)" to="(2580,1350)"/>
+    <wire from="(2600,1360)" to="(2600,1370)"/>
+    <wire from="(2540,1360)" to="(2600,1360)"/>
+    <wire from="(2580,1350)" to="(2580,1370)"/>
+    <wire from="(2390,1390)" to="(2570,1390)"/>
+    <wire from="(2590,1400)" to="(2590,1410)"/>
+    <wire from="(2570,1380)" to="(2570,1390)"/>
+    <wire from="(2590,1410)" to="(2630,1410)"/>
+    <wire from="(1710,1600)" to="(1710,1640)"/>
+    <wire from="(1520,1600)" to="(1710,1600)"/>
+    <wire from="(1710,1600)" to="(2520,1600)"/>
+    <comp lib="0" loc="(1500,1100)" name="Ground">
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(1960,1480)" name="Pin">
+    <comp lib="0" loc="(1980,1310)" name="Pin">
       <a name="width" val="32"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="fracA"/>
+    </comp>
+    <comp lib="1" loc="(1790,910)" name="XOR Gate"/>
+    <comp lib="3" loc="(1730,1100)" name="Multiplexer">
+      <a name="facing" val="south"/>
+      <a name="width" val="32"/>
+      <a name="enable" val="false"/>
+    </comp>
+    <comp lib="1" loc="(2690,1080)" name="XOR Gate">
+      <a name="width" val="32"/>
     </comp>
     <comp lib="1" loc="(2310,1540)" name="AND Gate"/>
     <comp lib="0" loc="(1950,1850)" name="Pin">
@@ -311,18 +222,11 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
       <a name="width" val="32"/>
       <a name="label" val="Significand to be Shifted"/>
     </comp>
-    <comp lib="0" loc="(1960,850)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="fanout" val="32"/>
-      <a name="incoming" val="32"/>
-    </comp>
     <comp lib="4" loc="(2130,1690)" name="Adder">
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(2630,1340)" name="Splitter">
-      <a name="facing" val="west"/>
-      <a name="fanout" val="32"/>
-      <a name="incoming" val="32"/>
+    <comp lib="0" loc="(1520,1040)" name="Power">
+      <a name="width" val="32"/>
     </comp>
     <comp lib="0" loc="(1650,900)" name="Pin">
       <a name="tristate" val="false"/>
@@ -336,15 +240,16 @@ This file is intended to be loaded by Logisim http://logisim.altervista.org
     <comp lib="1" loc="(2160,900)" name="XOR Gate">
       <a name="width" val="32"/>
     </comp>
-    <comp lib="0" loc="(1980,1310)" name="Pin">
+    <comp lib="3" loc="(2590,1400)" name="Multiplexer">
+      <a name="facing" val="south"/>
+      <a name="width" val="32"/>
+      <a name="enable" val="false"/>
+    </comp>
+    <comp lib="0" loc="(1960,1480)" name="Pin">
       <a name="width" val="32"/>
       <a name="tristate" val="false"/>
-      <a name="label" val="fracB"/>
     </comp>
     <comp lib="4" loc="(2170,1470)" name="Adder">
-      <a name="width" val="32"/>
-    </comp>
-    <comp lib="0" loc="(1710,1660)" name="Ground">
       <a name="width" val="32"/>
     </comp>
   </circuit>
