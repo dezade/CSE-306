@@ -1,7 +1,7 @@
-%option noyywrap
+%option noyywrap yylineno
 
 %{
-#include "parser.tab.h"
+#include "y.tab.h"
 %}
 
 %%
@@ -9,6 +9,7 @@
 \$("zero"|"t0"|"t1"|"t2"|"t3"|"t4") { yylval = std::string(yytext); return REGISTER; }
 \$[a-z]+[0-9]* { std::cout << "unrecognized register: " << yytext << std::endl; exit(1); }
 
+[ \t\v]+ {}
 "add" { return ADD; }
 "addi" { return ADDI; }
 "sub" { return SUB; }
@@ -39,7 +40,7 @@
 
 ";".* {}
 
-\n {}
+[\n\r]+ {}
 . { if (yytext[0] != ' ') std::cout << "Unrecognized pattern: " << yytext << std::endl; }
 
 %%

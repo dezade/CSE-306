@@ -13,6 +13,7 @@
 
 int yylex(void);
 extern FILE *yyin;
+extern int yylineno;
 void yyerror(const char *message);
 
 int getOpcodeID(std::string opcode);
@@ -64,6 +65,8 @@ program: program unit
 	unit
 ;
 unit: instruction { ++instructionCounter; }
+	|
+	labels {}
 	|
 	labels instruction { ++instructionCounter; }
 ;
@@ -232,12 +235,16 @@ int main(int argc, char **argv) {
 
 	std::ofstream hexFile("hex.txt");
 	std::ofstream binFile("out.bin");
-	for (auto i = instructions.begin(); i != instructions.end(); ++i) {
-		hexFile << *i << std::endl;
-		writeBin(binFile, *i);
+
+	auto ind = instructions.begin();
+	hexFile << "0x" << *ind;
+	++ind;
+	for (; ind != instructions.end(); ++ind) {
+		hexFile << ", 0x" << *ind;
+		writeBin(binFile, *ind);
 	}
 	hexFile.close();
-
+	binFile.close();
 	fclose(yyin);
 	return 0;
 }
@@ -268,12 +275,12 @@ int getOpcodeID(std::string opcode) {
 }
 
 int getRegisterID(std::string reg) {
-	if (reg == "$zero") return 0;
-	else if (reg == "$t0") return 1;
-	else if (reg == "$t1") return 2;
-	else if (reg == "$t2") return 3;
-	else if (reg == "$t3") return 4;
-	else if (reg == "$t4") return 5;
+	if (reg == "$t0") return 0;
+	else if (reg == "$t1") return 1;
+	else if (reg == "$t2") return 2;
+	else if (reg == "$t3") return 3;
+	else if (reg == "$t4") return 4;
+	else if (reg == "$zero") return 5;
 	else if (reg == "$sp") return 6;
 	else if (reg == "$x0") return 7;
 	else {
