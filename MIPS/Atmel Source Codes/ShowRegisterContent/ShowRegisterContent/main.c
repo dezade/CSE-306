@@ -9,7 +9,7 @@ int main(){
 	MCUCSR|=(1<<JTD);
 
 	DDRA = 0x00; // Scan queried register address (A2-A0)
-	DDRB = 0x07; // Send address to big boss (B2-B0)
+	DDRB = 0x0F; // Send address to big boss (B3-B0)
 	DDRC = 0x00; // Receive data from big boss (C3-C0)
 	DDRD = 0xFF; // Show register address (D7-D4) and data (D3-D0)
 	
