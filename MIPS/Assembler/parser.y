@@ -13,7 +13,6 @@
 
 int yylex(void);
 extern FILE *yyin;
-extern int yylineno;
 void yyerror(const char *message);
 
 int getOpcodeID(std::string opcode);
@@ -165,6 +164,8 @@ push_instruction: PUSH REGISTER {
 	instructionBuffer << getHexChar(getOpcodeID("subi")) << getHexChar(getRegisterID("$sp")) << getHexChar(getRegisterID("$sp")) << "1";
 	instructions.push_back(instructionBuffer.str());
 	instructionBuffer.str(std::string());
+
+	++instructionCounter;
 }
 	|
 	PUSH INT LPAREN REGISTER RPAREN {
@@ -179,6 +180,8 @@ push_instruction: PUSH REGISTER {
 		instructionBuffer << getHexChar(getOpcodeID("subi")) << getHexChar(getRegisterID("$sp")) << getHexChar(getRegisterID("$sp")) << "1";
 		instructions.push_back(instructionBuffer.str());
 		instructionBuffer.str(std::string());
+
+		instructionCounter += 2;
 	}
 ;
 
@@ -190,6 +193,8 @@ pop_instruction: POP REGISTER {
 	instructionBuffer << getHexChar(getOpcodeID("lw")) << getHexChar(getRegisterID("$sp")) << getHexChar(getRegisterID($2)) << "0";
 	instructions.push_back(instructionBuffer.str());
 	instructionBuffer.str(std::string());
+
+	++instructionCounter;
 }
 ;
 
@@ -210,17 +215,11 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
-	yyparse();
-
 	if (argc == 4) {
 		if (std::string(argv[1]) == "--safe-init") {
-			// clear $zero by performing $zero = $zero and ($zero nor $zero)
-			instructionBuffer << getHexChar(getOpcodeID("nor")) << getHexChar(getRegisterID("$zero")) << getHexChar(getRegisterID("$zero")) << getHexChar(getRegisterID("$x0"));
+			// clear $zero by performing $zero = $zero sub $zero
+			instructionBuffer << getHexChar(getOpcodeID("sub")) << getHexChar(getRegisterID("$zero")) << getHexChar(getRegisterID("$zero")) << getHexChar(getRegisterID("$zero"));
 			instructions.insert(instructions.begin(), instructionBuffer.str());
-			instructionBuffer.str(std::string());
-
-			instructionBuffer << getHexChar(getOpcodeID("and")) << getHexChar(getRegisterID("$zero")) << getHexChar(getRegisterID("$x0")) << getHexChar(getRegisterID("$zero"));
-			instructions.insert(instructions.begin() + 1, instructionBuffer.str());
 			instructionBuffer.str(std::string());
 
 			//set $sp to F by performing $sp = $sp | 0xF
@@ -231,20 +230,26 @@ int main(int argc, char **argv) {
 			std::cout << "Unknown flag " << argv[1] << std::endl;
 			exit(1);
 		}
+
+		instructionCounter += 2;
+
 	}
 
-	std::ofstream hexFile("hex.txt");
+	yyparse();
+
+
+	std::ofstream hexFile("instructionsHex.txt");
 	std::ofstream binFile("out.bin");
 
 	auto ind = instructions.begin();
 	hexFile << "0x" << *ind;
-	++ind;
+	ind++;
 	for (; ind != instructions.end(); ++ind) {
 		hexFile << ", 0x" << *ind;
 		writeBin(binFile, *ind);
 	}
 	hexFile.close();
-	binFile.close();
+
 	fclose(yyin);
 	return 0;
 }

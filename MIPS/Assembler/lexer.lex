@@ -1,7 +1,8 @@
-%option noyywrap yylineno
+%option noyywrap
 
 %{
 #include "y.tab.h"
+#include <cstdlib>
 %}
 
 %%
@@ -9,7 +10,6 @@
 \$("zero"|"t0"|"t1"|"t2"|"t3"|"t4") { yylval = std::string(yytext); return REGISTER; }
 \$[a-z]+[0-9]* { std::cout << "unrecognized register: " << yytext << std::endl; exit(1); }
 
-[ \t\v]+ {}
 "add" { return ADD; }
 "addi" { return ADDI; }
 "sub" { return SUB; }
@@ -36,11 +36,12 @@
 ")" { return RPAREN; }
 
 [a-zA-Z_][a-zA-Z0-9_]* { yylval = std::string(yytext); return LABEL;}
-[0-9]+ { yylval = std::string(yytext); return INT; }
+"-"?[0-9]+ { yylval = yytext[0] == '-'? std::to_string(16 + atoi(yytext)) : std::string(yytext); return INT; }
 
 ";".* {}
 
-[\n\r]+ {}
-. { if (yytext[0] != ' ') std::cout << "Unrecognized pattern: " << yytext << std::endl; }
+(\r)?\n {}
+
+. { if (yytext[0] != ' ' && yytext[0] != '\t') std::cout << "WARNING: Unrecognized character: " << yytext << " ascii value " << int(yytext[0]) << std::endl; }
 
 %%
