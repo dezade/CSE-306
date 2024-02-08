@@ -1,0 +1,338 @@
+
+GccApplication1.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000001ca  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000022  00800060  000001ca  0000025e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000002  00800082  00800082  00000280  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000280  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002b0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000020  00000000  00000000  000002ec  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000006b8  00000000  00000000  0000030c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000005c4  00000000  00000000  000009c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000002b8  00000000  00000000  00000f88  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000034  00000000  00000000  00001240  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000376  00000000  00000000  00001274  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000178  00000000  00000000  000015ea  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000010  00000000  00000000  00001762  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	ea ec       	ldi	r30, 0xCA	; 202
+  68:	f1 e0       	ldi	r31, 0x01	; 1
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	a2 38       	cpi	r26, 0x82	; 130
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	a2 e8       	ldi	r26, 0x82	; 130
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	a4 38       	cpi	r26, 0x84	; 132
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 49 00 	call	0x92	; 0x92 <main>
+  8a:	0c 94 e3 00 	jmp	0x1c6	; 0x1c6 <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <main>:
+#include <avr/interrupt.h>
+
+volatile unsigned int counter;
+
+int main()
+{
+  92:	cf 93       	push	r28
+  94:	df 93       	push	r29
+  96:	cd b7       	in	r28, 0x3d	; 61
+  98:	de b7       	in	r29, 0x3e	; 62
+  9a:	a2 97       	sbiw	r28, 0x22	; 34
+  9c:	0f b6       	in	r0, 0x3f	; 63
+  9e:	f8 94       	cli
+  a0:	de bf       	out	0x3e, r29	; 62
+  a2:	0f be       	out	0x3f, r0	; 63
+  a4:	cd bf       	out	0x3d, r28	; 61
+  DDRD = 0b01000000; // D7 -> clkin D6 ->clkout D5 -> feedback D0 -> ZF
+  a6:	80 e4       	ldi	r24, 0x40	; 64
+  a8:	81 bb       	out	0x11, r24	; 17
+  PORTD = 0x00;
+  aa:	12 ba       	out	0x12, r1	; 18
+  DDRA = 0xFF; //lower 8 bit output
+  ac:	8f ef       	ldi	r24, 0xFF	; 255
+  ae:	8a bb       	out	0x1a, r24	; 26
+  DDRB = 0xFF; // higher 8 bit output
+  b0:	87 bb       	out	0x17, r24	; 23
+  
+  DDRC = 0xFF; 
+  b2:	84 bb       	out	0x14, r24	; 20
+
+  unsigned int instruction[] = {0x850A, 0x8517, 0x0012, 0x8503, 0xD202, 0x8531, 0xF080, 0x8530, 0x2333, 0x3333, 0x1432, 0x4431, 0xB030, 0x1600, 0xC661, 0x8661, 0x4610};
+  b4:	82 e2       	ldi	r24, 0x22	; 34
+  b6:	e0 e6       	ldi	r30, 0x60	; 96
+  b8:	f0 e0       	ldi	r31, 0x00	; 0
+  ba:	de 01       	movw	r26, r28
+  bc:	11 96       	adiw	r26, 0x01	; 1
+  be:	01 90       	ld	r0, Z+
+  c0:	0d 92       	st	X+, r0
+  c2:	8a 95       	dec	r24
+  c4:	e1 f7       	brne	.-8      	; 0xbe <main+0x2c>
+  //unsigned char clock = PIND & 0x80, ZF = PIND & 0x01;
+  
+  counter = 0;
+  c6:	10 92 83 00 	sts	0x0083, r1	; 0x800083 <__data_end+0x1>
+  ca:	10 92 82 00 	sts	0x0082, r1	; 0x800082 <__data_end>
+  
+  int length = sizeof(instruction)/sizeof(unsigned int);
+  
+  while(counter < length)
+  ce:	80 91 82 00 	lds	r24, 0x0082	; 0x800082 <__data_end>
+  d2:	90 91 83 00 	lds	r25, 0x0083	; 0x800083 <__data_end+0x1>
+  d6:	41 97       	sbiw	r24, 0x11	; 17
+  d8:	08 f0       	brcs	.+2      	; 0xdc <main+0x4a>
+  da:	6a c0       	rjmp	.+212    	; 0x1b0 <main+0x11e>
+    {
+      while(!(PIND & 0x20));
+      if (!(PIND & 0x01)) counter += offset_address;
+    }  
+    
+    PORTD = 0x40; // sending clk
+  dc:	60 e4       	ldi	r22, 0x40	; 64
+  
+  while(counter < length)
+  {
+    //PORTC = 0xFF; 
+    //_delay_ms(10);
+    while(!(PIND & 0x80));
+  de:	87 9b       	sbis	0x10, 7	; 16
+  e0:	fe cf       	rjmp	.-4      	; 0xde <main+0x4c>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  e2:	8f e4       	ldi	r24, 0x4F	; 79
+  e4:	93 ec       	ldi	r25, 0xC3	; 195
+  e6:	01 97       	sbiw	r24, 0x01	; 1
+  e8:	f1 f7       	brne	.-4      	; 0xe6 <main+0x54>
+  ea:	00 c0       	rjmp	.+0      	; 0xec <main+0x5a>
+  ec:	00 00       	nop
+    _delay_ms(200);
+    unsigned int output = instruction[counter];
+  ee:	e0 91 82 00 	lds	r30, 0x0082	; 0x800082 <__data_end>
+  f2:	f0 91 83 00 	lds	r31, 0x0083	; 0x800083 <__data_end+0x1>
+  f6:	ee 0f       	add	r30, r30
+  f8:	ff 1f       	adc	r31, r31
+  fa:	81 e0       	ldi	r24, 0x01	; 1
+  fc:	90 e0       	ldi	r25, 0x00	; 0
+  fe:	8c 0f       	add	r24, r28
+ 100:	9d 1f       	adc	r25, r29
+ 102:	e8 0f       	add	r30, r24
+ 104:	f9 1f       	adc	r31, r25
+ 106:	80 81       	ld	r24, Z
+ 108:	91 81       	ldd	r25, Z+1	; 0x01
+    
+    PORTA = (unsigned char)(output & 0x00FF);
+ 10a:	8b bb       	out	0x1b, r24	; 27
+    PORTB = (unsigned char)((output & 0xFF00)>>8);
+ 10c:	98 bb       	out	0x18, r25	; 24
+   
+    
+    unsigned int opcode = (output & 0xF000)>>12;
+ 10e:	ac 01       	movw	r20, r24
+ 110:	45 2f       	mov	r20, r21
+ 112:	55 27       	eor	r21, r21
+ 114:	42 95       	swap	r20
+ 116:	4f 70       	andi	r20, 0x0F	; 15
+    unsigned int jump_address = (output & 0x0FF0)>>4;
+    unsigned int offset_address = (output & 0x000F);
+    
+    counter++;
+ 118:	20 91 82 00 	lds	r18, 0x0082	; 0x800082 <__data_end>
+ 11c:	30 91 83 00 	lds	r19, 0x0083	; 0x800083 <__data_end+0x1>
+ 120:	2f 5f       	subi	r18, 0xFF	; 255
+ 122:	3f 4f       	sbci	r19, 0xFF	; 255
+ 124:	30 93 83 00 	sts	0x0083, r19	; 0x800083 <__data_end+0x1>
+ 128:	20 93 82 00 	sts	0x0082, r18	; 0x800082 <__data_end>
+    
+    if(opcode == 0x000F) // jump check
+ 12c:	4f 30       	cpi	r20, 0x0F	; 15
+ 12e:	51 05       	cpc	r21, r1
+ 130:	69 f4       	brne	.+26     	; 0x14c <main+0xba>
+    PORTA = (unsigned char)(output & 0x00FF);
+    PORTB = (unsigned char)((output & 0xFF00)>>8);
+   
+    
+    unsigned int opcode = (output & 0xF000)>>12;
+    unsigned int jump_address = (output & 0x0FF0)>>4;
+ 132:	80 7f       	andi	r24, 0xF0	; 240
+ 134:	9f 70       	andi	r25, 0x0F	; 15
+ 136:	92 95       	swap	r25
+ 138:	82 95       	swap	r24
+ 13a:	8f 70       	andi	r24, 0x0F	; 15
+ 13c:	89 27       	eor	r24, r25
+ 13e:	9f 70       	andi	r25, 0x0F	; 15
+ 140:	89 27       	eor	r24, r25
+    
+    counter++;
+    
+    if(opcode == 0x000F) // jump check
+    {  
+      counter = jump_address;
+ 142:	90 93 83 00 	sts	0x0083, r25	; 0x800083 <__data_end+0x1>
+ 146:	80 93 82 00 	sts	0x0082, r24	; 0x800082 <__data_end>
+ 14a:	23 c0       	rjmp	.+70     	; 0x192 <main+0x100>
+    PORTB = (unsigned char)((output & 0xFF00)>>8);
+   
+    
+    unsigned int opcode = (output & 0xF000)>>12;
+    unsigned int jump_address = (output & 0x0FF0)>>4;
+    unsigned int offset_address = (output & 0x000F);
+ 14c:	8f 70       	andi	r24, 0x0F	; 15
+ 14e:	99 27       	eor	r25, r25
+    
+    if(opcode == 0x000F) // jump check
+    {  
+      counter = jump_address;
+    }
+    else if(opcode == 0x000D) //beq check
+ 150:	4d 30       	cpi	r20, 0x0D	; 13
+ 152:	51 05       	cpc	r21, r1
+ 154:	69 f4       	brne	.+26     	; 0x170 <main+0xde>
+    {  
+      //while(!(PIND & 0x20));
+      if (PIND & 0x01) counter += offset_address;
+ 156:	80 9b       	sbis	0x10, 0	; 16
+ 158:	1c c0       	rjmp	.+56     	; 0x192 <main+0x100>
+ 15a:	20 91 82 00 	lds	r18, 0x0082	; 0x800082 <__data_end>
+ 15e:	30 91 83 00 	lds	r19, 0x0083	; 0x800083 <__data_end+0x1>
+ 162:	82 0f       	add	r24, r18
+ 164:	93 1f       	adc	r25, r19
+ 166:	90 93 83 00 	sts	0x0083, r25	; 0x800083 <__data_end+0x1>
+ 16a:	80 93 82 00 	sts	0x0082, r24	; 0x800082 <__data_end>
+ 16e:	11 c0       	rjmp	.+34     	; 0x192 <main+0x100>
+      
+    }
+    else if(opcode == 0x0006) //bneq check
+ 170:	46 30       	cpi	r20, 0x06	; 6
+ 172:	51 05       	cpc	r21, r1
+ 174:	71 f4       	brne	.+28     	; 0x192 <main+0x100>
+    {
+      while(!(PIND & 0x20));
+ 176:	85 9b       	sbis	0x10, 5	; 16
+ 178:	fe cf       	rjmp	.-4      	; 0x176 <main+0xe4>
+      if (!(PIND & 0x01)) counter += offset_address;
+ 17a:	80 99       	sbic	0x10, 0	; 16
+ 17c:	0a c0       	rjmp	.+20     	; 0x192 <main+0x100>
+ 17e:	20 91 82 00 	lds	r18, 0x0082	; 0x800082 <__data_end>
+ 182:	30 91 83 00 	lds	r19, 0x0083	; 0x800083 <__data_end+0x1>
+ 186:	82 0f       	add	r24, r18
+ 188:	93 1f       	adc	r25, r19
+ 18a:	90 93 83 00 	sts	0x0083, r25	; 0x800083 <__data_end+0x1>
+ 18e:	80 93 82 00 	sts	0x0082, r24	; 0x800082 <__data_end>
+    }  
+    
+    PORTD = 0x40; // sending clk
+ 192:	62 bb       	out	0x12, r22	; 18
+ 194:	83 ef       	ldi	r24, 0xF3	; 243
+ 196:	91 e0       	ldi	r25, 0x01	; 1
+ 198:	01 97       	sbiw	r24, 0x01	; 1
+ 19a:	f1 f7       	brne	.-4      	; 0x198 <main+0x106>
+ 19c:	00 c0       	rjmp	.+0      	; 0x19e <main+0x10c>
+ 19e:	00 00       	nop
+    _delay_ms(2);
+    PORTD = 0x00;
+ 1a0:	12 ba       	out	0x12, r1	; 18
+  
+  counter = 0;
+  
+  int length = sizeof(instruction)/sizeof(unsigned int);
+  
+  while(counter < length)
+ 1a2:	80 91 82 00 	lds	r24, 0x0082	; 0x800082 <__data_end>
+ 1a6:	90 91 83 00 	lds	r25, 0x0083	; 0x800083 <__data_end+0x1>
+ 1aa:	41 97       	sbiw	r24, 0x11	; 17
+ 1ac:	08 f4       	brcc	.+2      	; 0x1b0 <main+0x11e>
+ 1ae:	97 cf       	rjmp	.-210    	; 0xde <main+0x4c>
+  }
+  
+  //0x0F;
+  //PORTD = 0xf0;
+
+ 1b0:	80 e0       	ldi	r24, 0x00	; 0
+ 1b2:	90 e0       	ldi	r25, 0x00	; 0
+ 1b4:	a2 96       	adiw	r28, 0x22	; 34
+ 1b6:	0f b6       	in	r0, 0x3f	; 63
+ 1b8:	f8 94       	cli
+ 1ba:	de bf       	out	0x3e, r29	; 62
+ 1bc:	0f be       	out	0x3f, r0	; 63
+ 1be:	cd bf       	out	0x3d, r28	; 61
+ 1c0:	df 91       	pop	r29
+ 1c2:	cf 91       	pop	r28
+ 1c4:	08 95       	ret
+
+000001c6 <_exit>:
+ 1c6:	f8 94       	cli
+
+000001c8 <__stop_program>:
+ 1c8:	ff cf       	rjmp	.-2      	; 0x1c8 <__stop_program>
