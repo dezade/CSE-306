@@ -5,29 +5,29 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .text         000001c2  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000022  00800060  000001c2  00000256  2**0
+  1 .data         0000000c  00800060  000001c2  00000256  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000002  00800082  00800082  00000278  2**0
+  2 .bss          00000002  0080006c  0080006c  00000262  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000278  2**0
+  3 .comment      00000030  00000000  00000000  00000262  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002a8  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000294  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000020  00000000  00000000  000002e4  2**0
+  5 .debug_aranges 00000020  00000000  00000000  000002d0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000006b8  00000000  00000000  00000304  2**0
+  6 .debug_info   000006b8  00000000  00000000  000002f0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000005c4  00000000  00000000  000009bc  2**0
+  7 .debug_abbrev 000005c4  00000000  00000000  000009a8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000002f1  00000000  00000000  00000f80  2**0
+  8 .debug_line   000002f1  00000000  00000000  00000f6c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000034  00000000  00000000  00001274  2**2
+  9 .debug_frame  00000034  00000000  00000000  00001260  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000373  00000000  00000000  000012a8  2**0
+ 10 .debug_str    00000373  00000000  00000000  00001294  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000145  00000000  00000000  0000161b  2**0
+ 11 .debug_loc    00000145  00000000  00000000  00001607  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000010  00000000  00000000  00001760  2**0
+ 12 .debug_ranges 00000010  00000000  00000000  0000174c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -72,13 +72,13 @@ Disassembly of section .text:
   6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
   6c:	05 90       	lpm	r0, Z+
   6e:	0d 92       	st	X+, r0
-  70:	a2 38       	cpi	r26, 0x82	; 130
+  70:	ac 36       	cpi	r26, 0x6C	; 108
   72:	b1 07       	cpc	r27, r17
   74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
 
 00000076 <__do_clear_bss>:
   76:	20 e0       	ldi	r18, 0x00	; 0
-  78:	a2 e8       	ldi	r26, 0x82	; 130
+  78:	ac e6       	ldi	r26, 0x6C	; 108
   7a:	b0 e0       	ldi	r27, 0x00	; 0
   7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
 
@@ -86,7 +86,7 @@ Disassembly of section .text:
   7e:	1d 92       	st	X+, r1
 
 00000080 <.do_clear_bss_start>:
-  80:	a4 38       	cpi	r26, 0x84	; 132
+  80:	ae 36       	cpi	r26, 0x6E	; 110
   82:	b2 07       	cpc	r27, r18
   84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
   86:	0e 94 49 00 	call	0x92	; 0x92 <main>
@@ -106,7 +106,7 @@ int main()
   94:	df 93       	push	r29
   96:	cd b7       	in	r28, 0x3d	; 61
   98:	de b7       	in	r29, 0x3e	; 62
-  9a:	a2 97       	sbiw	r28, 0x22	; 34
+  9a:	2c 97       	sbiw	r28, 0x0c	; 12
   9c:	0f b6       	in	r0, 0x3f	; 63
   9e:	f8 94       	cli
   a0:	de bf       	out	0x3e, r29	; 62
@@ -126,8 +126,8 @@ int main()
   DDRC = 0xFF; 
   b2:	84 bb       	out	0x14, r24	; 20
 
-  unsigned int instruction[] = {0x850A, 0x8517, 0x0012, 0x8503, 0xD202, 0x8531, 0xF080, 0x8530, 0x2333, 0x3333, 0x1432, 0x4431, 0xB030, 0x1600, 0xC661, 0x8661, 0x4610};
-  b4:	82 e2       	ldi	r24, 0x22	; 34
+  unsigned int instruction[] = {0x8507, 0x8518, 0x8523, 0x8534, 0x8545, 0xE013};
+  b4:	8c e0       	ldi	r24, 0x0C	; 12
   b6:	e0 e6       	ldi	r30, 0x60	; 96
   b8:	f0 e0       	ldi	r31, 0x00	; 0
   ba:	de 01       	movw	r26, r28
@@ -139,8 +139,8 @@ int main()
   //unsigned char clock = PIND & 0x80, ZF = PIND & 0x01;
   
   counter = 0;
-  c6:	10 92 83 00 	sts	0x0083, r1	; 0x800083 <__data_end+0x1>
-  ca:	10 92 82 00 	sts	0x0082, r1	; 0x800082 <__data_end>
+  c6:	10 92 6d 00 	sts	0x006D, r1	; 0x80006d <__data_end+0x1>
+  ca:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <__data_end>
   
   int length = sizeof(instruction)/sizeof(unsigned int);
   
@@ -166,8 +166,8 @@ int main()
   de:	00 00       	nop
     _delay_ms(200);
     unsigned int output = instruction[counter];
-  e0:	e0 91 82 00 	lds	r30, 0x0082	; 0x800082 <__data_end>
-  e4:	f0 91 83 00 	lds	r31, 0x0083	; 0x800083 <__data_end+0x1>
+  e0:	e0 91 6c 00 	lds	r30, 0x006C	; 0x80006c <__data_end>
+  e4:	f0 91 6d 00 	lds	r31, 0x006D	; 0x80006d <__data_end+0x1>
   e8:	ee 0f       	add	r30, r30
   ea:	ff 1f       	adc	r31, r31
   ec:	81 e0       	ldi	r24, 0x01	; 1
@@ -207,12 +207,12 @@ int main()
  120:	99 27       	eor	r25, r25
     
     counter++;
- 122:	20 91 82 00 	lds	r18, 0x0082	; 0x800082 <__data_end>
- 126:	30 91 83 00 	lds	r19, 0x0083	; 0x800083 <__data_end+0x1>
+ 122:	20 91 6c 00 	lds	r18, 0x006C	; 0x80006c <__data_end>
+ 126:	30 91 6d 00 	lds	r19, 0x006D	; 0x80006d <__data_end+0x1>
  12a:	2f 5f       	subi	r18, 0xFF	; 255
  12c:	3f 4f       	sbci	r19, 0xFF	; 255
- 12e:	30 93 83 00 	sts	0x0083, r19	; 0x800083 <__data_end+0x1>
- 132:	20 93 82 00 	sts	0x0082, r18	; 0x800082 <__data_end>
+ 12e:	30 93 6d 00 	sts	0x006D, r19	; 0x80006d <__data_end+0x1>
+ 132:	20 93 6c 00 	sts	0x006C, r18	; 0x80006c <__data_end>
     
     if(opcode == 0x000F) // jump check
  136:	6f 30       	cpi	r22, 0x0F	; 15
@@ -220,8 +220,8 @@ int main()
  13a:	29 f4       	brne	.+10     	; 0x146 <main+0xb4>
     {  
       counter = jump_address;
- 13c:	50 93 83 00 	sts	0x0083, r21	; 0x800083 <__data_end+0x1>
- 140:	40 93 82 00 	sts	0x0082, r20	; 0x800082 <__data_end>
+ 13c:	50 93 6d 00 	sts	0x006D, r21	; 0x80006d <__data_end+0x1>
+ 140:	40 93 6c 00 	sts	0x006C, r20	; 0x80006c <__data_end>
  144:	21 c0       	rjmp	.+66     	; 0x188 <main+0xf6>
     }
     else if(opcode == 0x000D) //beq check
@@ -233,12 +233,12 @@ int main()
       if (PIND & 0x01) counter += offset_address;
  14c:	80 9b       	sbis	0x10, 0	; 16
  14e:	1c c0       	rjmp	.+56     	; 0x188 <main+0xf6>
- 150:	20 91 82 00 	lds	r18, 0x0082	; 0x800082 <__data_end>
- 154:	30 91 83 00 	lds	r19, 0x0083	; 0x800083 <__data_end+0x1>
+ 150:	20 91 6c 00 	lds	r18, 0x006C	; 0x80006c <__data_end>
+ 154:	30 91 6d 00 	lds	r19, 0x006D	; 0x80006d <__data_end+0x1>
  158:	82 0f       	add	r24, r18
  15a:	93 1f       	adc	r25, r19
- 15c:	90 93 83 00 	sts	0x0083, r25	; 0x800083 <__data_end+0x1>
- 160:	80 93 82 00 	sts	0x0082, r24	; 0x800082 <__data_end>
+ 15c:	90 93 6d 00 	sts	0x006D, r25	; 0x80006d <__data_end+0x1>
+ 160:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <__data_end>
  164:	11 c0       	rjmp	.+34     	; 0x188 <main+0xf6>
       
     }
@@ -253,12 +253,12 @@ int main()
       if (!(PIND & 0x01)) counter += offset_address;
  170:	80 99       	sbic	0x10, 0	; 16
  172:	0a c0       	rjmp	.+20     	; 0x188 <main+0xf6>
- 174:	20 91 82 00 	lds	r18, 0x0082	; 0x800082 <__data_end>
- 178:	30 91 83 00 	lds	r19, 0x0083	; 0x800083 <__data_end+0x1>
+ 174:	20 91 6c 00 	lds	r18, 0x006C	; 0x80006c <__data_end>
+ 178:	30 91 6d 00 	lds	r19, 0x006D	; 0x80006d <__data_end+0x1>
  17c:	82 0f       	add	r24, r18
  17e:	93 1f       	adc	r25, r19
- 180:	90 93 83 00 	sts	0x0083, r25	; 0x800083 <__data_end+0x1>
- 184:	80 93 82 00 	sts	0x0082, r24	; 0x800082 <__data_end>
+ 180:	90 93 6d 00 	sts	0x006D, r25	; 0x80006d <__data_end+0x1>
+ 184:	80 93 6c 00 	sts	0x006C, r24	; 0x80006c <__data_end>
     }  
     
     PORTD = 0x40; // sending clk
@@ -279,9 +279,9 @@ int main()
   int length = sizeof(instruction)/sizeof(unsigned int);
   
   while(counter < length)
- 19a:	80 91 82 00 	lds	r24, 0x0082	; 0x800082 <__data_end>
- 19e:	90 91 83 00 	lds	r25, 0x0083	; 0x800083 <__data_end+0x1>
- 1a2:	41 97       	sbiw	r24, 0x11	; 17
+ 19a:	80 91 6c 00 	lds	r24, 0x006C	; 0x80006c <__data_end>
+ 19e:	90 91 6d 00 	lds	r25, 0x006D	; 0x80006d <__data_end+0x1>
+ 1a2:	06 97       	sbiw	r24, 0x06	; 6
  1a4:	08 f4       	brcc	.+2      	; 0x1a8 <main+0x116>
  1a6:	94 cf       	rjmp	.-216    	; 0xd0 <main+0x3e>
   }
@@ -291,7 +291,7 @@ int main()
 
  1a8:	80 e0       	ldi	r24, 0x00	; 0
  1aa:	90 e0       	ldi	r25, 0x00	; 0
- 1ac:	a2 96       	adiw	r28, 0x22	; 34
+ 1ac:	2c 96       	adiw	r28, 0x0c	; 12
  1ae:	0f b6       	in	r0, 0x3f	; 63
  1b0:	f8 94       	cli
  1b2:	de bf       	out	0x3e, r29	; 62
