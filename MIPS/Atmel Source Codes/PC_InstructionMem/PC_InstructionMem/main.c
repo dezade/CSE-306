@@ -23,7 +23,7 @@ int main()
   
   DDRC = 0xFF; 
 
-  unsigned int instruction[] = {0x8507, 0x8518, 0x8523, 0x8534, 0x8545, 0xE013};
+  unsigned int instruction[] = {0x8507, 0x8518, 0xC113, 0x5112, 0xA115, 0x9000, 0x1600, 0xC661, 0xE100, 0x0010, 0xD011, 0x8535, 0xD131, 0x8541, 0x6411, 0x8510, 0x8500, 0x1013, 0x4023, 0x8661, 0x4620};
   //unsigned char clock = PIND & 0x80, ZF = PIND & 0x01;
   
   counter = 0;
@@ -41,7 +41,6 @@ int main()
     PORTA = (unsigned char)(output & 0x00FF);
     PORTB = (unsigned char)((output & 0xFF00)>>8);
    
-    
     unsigned int opcode = (output & 0xF000)>>12;
     unsigned int jump_address = (output & 0x0FF0)>>4;
     unsigned int offset_address = (output & 0x000F);
@@ -54,9 +53,8 @@ int main()
     }
     else if(opcode == 0x000D) //beq check
     {  
-      //while(!(PIND & 0x20));
+      while(!(PIND & 0x20));
       if (PIND & 0x01) counter += offset_address;
-      
     }
     else if(opcode == 0x0006) //bneq check
     {
@@ -67,7 +65,6 @@ int main()
     PORTD = 0x40; // sending clk
     _delay_ms(2);
     PORTD = 0x00;
-    
   }
   
   //0x0F;

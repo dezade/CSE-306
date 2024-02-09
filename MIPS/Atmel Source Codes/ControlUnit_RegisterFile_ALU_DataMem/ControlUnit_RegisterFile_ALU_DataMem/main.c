@@ -16,7 +16,7 @@ int main(){
 	// 0-4 normal
 	// 5 zero
 	// 6 sp
-	unsigned char reg[7]= {0x00,0x00,0x00,0x00,0x00,0x00,0x0F};
+	unsigned char reg[8]= {0x00,0x00,0x00,0x00,0x00,0x00,0x0F,0x00};
 	unsigned char data[16] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 	0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 	
@@ -100,6 +100,7 @@ int main(){
 				if( reg[(maskh & 0x0F)] - reg[((maskl & 0xF0)>>4)] == 0 ){
 					///do something. send 0 flag
 					PORTD |= 0x01;
+					_delay_ms(1000);
 				}
 				break;
 			}
@@ -152,6 +153,7 @@ int main(){
 				if( reg[(maskh & 0x0F)] - reg[((maskl & 0xF0)>>4)] == 0 ){
 					///do something. send 0 flag
 					PORTD |= 0x01;
+					_delay_ms(1000);
 				}
 				break;
 			}
@@ -173,7 +175,7 @@ int main(){
 			}
 		}
 		PORTD |= 0b10000000;
-		_delay_ms(2);
+		//_delay_ms(2);
 		PORTD = 0x00;
 	}
 }
