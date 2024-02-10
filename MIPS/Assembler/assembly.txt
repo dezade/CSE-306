@@ -1,22 +1,32 @@
-addi $t0, $zero, 7;
-addi $t1, $zero, 8; 
-subi $t1, $t1, 3;
-ori  $t1, $t1, 2;
-andi $t1, $t1, 5;
-nor $t0, $t0, $t0; 
-push $t0;
-add $t0, $t1,$t0; 
-sub $t0, $t0, $t1; 
-beq $t0, $t1, L1
-addi $t3, $zero, 5;
+addi $t0, $t0, 3; 
+addi $t1, $t1, 2;
+addi $t2, $t2, 7;
 L1:
-beq $t1, $t3, L2; 
-addi $t4,$zero, 1; 
+add $t0, $t0, $t1;
+sw $t0, 3($t3);
+lw $t3, 3($t3); 
+beq $t0, $t2, L1;
+sub $t2, $t2, $t0;
+bneq $t0, $zero, L2;
+ori $t4, $t4, 10;
+subi $t4, $t4, 6;
 L2:
-bneq $t4,$t1, L3;
-addi $t1, $zero, 0; 
-L3: 
-addi $t0 , $zero, 0; 
-sw $t1, 3($t0); 
-lw $t2, 3($t0);
-pop $t2; 
+and $t1, $t1, $zero; 
+andi $t4, $t4, 0;
+or $t4, $t4, $t1;
+push $zero;
+push $t1;
+addi $t0, $zero, 5;
+addi $t1, $zero, 4;
+nor $t1, $t1, $t0;
+pop $t1;
+pop $t1;
+addi $t2, $zero, 4;
+L3:
+addi $t1, $t1, 1; 
+beq $t1, $t2, L4;
+j L3 
+L4:
+addi $t0, $zero, 15;
+
+

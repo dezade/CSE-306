@@ -77,6 +77,7 @@
 
 int yylex(void);
 extern FILE *yyin;
+extern int yylineno;
 void yyerror(const char *message);
 
 int getOpcodeID(std::string opcode);
@@ -93,7 +94,7 @@ std::stringstream instructionBuffer;
 std::vector<std::string> instructions;
 
 
-#line 97 "y.tab.c"
+#line 98 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -133,7 +134,7 @@ extern int yydebug;
 	#include <iostream>
 	#include <fstream>
 
-#line 137 "y.tab.c"
+#line 138 "y.tab.c"
 
 /* Token kinds.  */
 #ifndef YYTOKENTYPE
@@ -672,12 +673,12 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    37,    37,    62,    64,    66,    68,    70,    73,    73,
-      75,    75,    78,    80,    82,    84,    86,    88,    91,    91,
-      93,    93,    95,    95,    97,    97,    99,    99,   102,   109,
-     109,   111,   111,   113,   113,   115,   115,   117,   117,   119,
-     119,   121,   121,   123,   123,   126,   133,   140,   147,   147,
-     149,   149,   152,   152,   159,   171,   188
+       0,    38,    38,    63,    65,    67,    69,    71,    74,    74,
+      76,    76,    79,    81,    83,    85,    87,    89,    92,    92,
+      94,    94,    96,    96,    98,    98,   100,   100,   103,   110,
+     110,   112,   112,   114,   114,   116,   116,   118,   118,   120,
+     120,   122,   122,   124,   124,   127,   134,   141,   148,   148,
+     150,   150,   153,   153,   160,   172,   189
 };
 #endif
 
@@ -1304,7 +1305,7 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* start: program  */
-#line 37 "parser.y"
+#line 38 "parser.y"
                {
 
 	char beqCode =  getHexChar(getOpcodeID("beq"));
@@ -1329,187 +1330,187 @@ yyreduce:
 		}
 	}
 }
-#line 1333 "y.tab.c"
+#line 1334 "y.tab.c"
     break;
 
   case 5: /* unit: instruction  */
-#line 66 "parser.y"
+#line 67 "parser.y"
                   { ++instructionCounter; }
-#line 1339 "y.tab.c"
+#line 1340 "y.tab.c"
     break;
 
   case 6: /* unit: labels  */
-#line 68 "parser.y"
+#line 69 "parser.y"
                {}
-#line 1345 "y.tab.c"
+#line 1346 "y.tab.c"
     break;
 
   case 7: /* unit: labels instruction  */
-#line 70 "parser.y"
+#line 71 "parser.y"
                            { ++instructionCounter; }
-#line 1351 "y.tab.c"
+#line 1352 "y.tab.c"
     break;
 
   case 8: /* $@1: %empty  */
-#line 73 "parser.y"
+#line 74 "parser.y"
                      { map[yyvsp[0]] = instructionCounter; }
-#line 1357 "y.tab.c"
+#line 1358 "y.tab.c"
     break;
 
   case 10: /* $@2: %empty  */
-#line 75 "parser.y"
+#line 76 "parser.y"
               { map[yyvsp[0]] = instructionCounter; }
-#line 1363 "y.tab.c"
+#line 1364 "y.tab.c"
     break;
 
   case 18: /* $@3: %empty  */
-#line 91 "parser.y"
+#line 92 "parser.y"
                        { instructionBuffer << getHexChar(getOpcodeID("add")); }
-#line 1369 "y.tab.c"
+#line 1370 "y.tab.c"
     break;
 
   case 20: /* $@4: %empty  */
-#line 93 "parser.y"
+#line 94 "parser.y"
             { instructionBuffer << getHexChar(getOpcodeID("sub")); }
-#line 1375 "y.tab.c"
+#line 1376 "y.tab.c"
     break;
 
   case 22: /* $@5: %empty  */
-#line 95 "parser.y"
+#line 96 "parser.y"
             { instructionBuffer << getHexChar(getOpcodeID("and")); }
-#line 1381 "y.tab.c"
+#line 1382 "y.tab.c"
     break;
 
   case 24: /* $@6: %empty  */
-#line 97 "parser.y"
+#line 98 "parser.y"
            { instructionBuffer << getHexChar(getOpcodeID("or")); }
-#line 1387 "y.tab.c"
+#line 1388 "y.tab.c"
     break;
 
   case 26: /* $@7: %empty  */
-#line 99 "parser.y"
+#line 100 "parser.y"
             { instructionBuffer << getHexChar(getOpcodeID("nor")); }
-#line 1393 "y.tab.c"
+#line 1394 "y.tab.c"
     break;
 
   case 28: /* rtype_params: REGISTER COMMA REGISTER COMMA REGISTER  */
-#line 102 "parser.y"
+#line 103 "parser.y"
                                                      {
 	instructionBuffer << getHexChar(getRegisterID(yyvsp[-2])) << getHexChar(getRegisterID(yyvsp[0])) << getHexChar(getRegisterID(yyvsp[-4]));
 	instructions.push_back(instructionBuffer.str());
 	instructionBuffer.str(std::string());
 }
-#line 1403 "y.tab.c"
+#line 1404 "y.tab.c"
     break;
 
   case 29: /* $@8: %empty  */
-#line 109 "parser.y"
+#line 110 "parser.y"
                         { instructionBuffer << getHexChar(getOpcodeID("addi")); }
-#line 1409 "y.tab.c"
+#line 1410 "y.tab.c"
     break;
 
   case 31: /* $@9: %empty  */
-#line 111 "parser.y"
+#line 112 "parser.y"
              { instructionBuffer << getHexChar(getOpcodeID("subi")); }
-#line 1415 "y.tab.c"
+#line 1416 "y.tab.c"
     break;
 
   case 33: /* $@10: %empty  */
-#line 113 "parser.y"
+#line 114 "parser.y"
              { instructionBuffer << getHexChar(getOpcodeID("andi")); }
-#line 1421 "y.tab.c"
+#line 1422 "y.tab.c"
     break;
 
   case 35: /* $@11: %empty  */
-#line 115 "parser.y"
+#line 116 "parser.y"
             { instructionBuffer << getHexChar(getOpcodeID("ori")); }
-#line 1427 "y.tab.c"
+#line 1428 "y.tab.c"
     break;
 
   case 37: /* $@12: %empty  */
-#line 117 "parser.y"
+#line 118 "parser.y"
             { instructionBuffer << getHexChar(getOpcodeID("beq")); }
-#line 1433 "y.tab.c"
+#line 1434 "y.tab.c"
     break;
 
   case 39: /* $@13: %empty  */
-#line 119 "parser.y"
+#line 120 "parser.y"
              { instructionBuffer << getHexChar(getOpcodeID("bneq")); }
-#line 1439 "y.tab.c"
+#line 1440 "y.tab.c"
     break;
 
   case 41: /* $@14: %empty  */
-#line 121 "parser.y"
+#line 122 "parser.y"
            { instructionBuffer << getHexChar(getOpcodeID("lw")); }
-#line 1445 "y.tab.c"
+#line 1446 "y.tab.c"
     break;
 
   case 43: /* $@15: %empty  */
-#line 123 "parser.y"
+#line 124 "parser.y"
            { instructionBuffer << getHexChar(getOpcodeID("sw")); }
-#line 1451 "y.tab.c"
+#line 1452 "y.tab.c"
     break;
 
   case 45: /* itype_params: REGISTER COMMA REGISTER COMMA INT  */
-#line 126 "parser.y"
+#line 127 "parser.y"
                                                 {
 	instructionBuffer << getHexChar(getRegisterID(yyvsp[-2])) << getHexChar(getRegisterID(yyvsp[-4])) << getHexChar(atoi(yyvsp[0].c_str()));
 	instructions.push_back(instructionBuffer.str());
 	instructionBuffer.str(std::string());
 }
-#line 1461 "y.tab.c"
+#line 1462 "y.tab.c"
     break;
 
   case 46: /* branch_params: REGISTER COMMA REGISTER COMMA LABEL  */
-#line 133 "parser.y"
+#line 134 "parser.y"
                                                    {
 	instructionBuffer << getHexChar(getRegisterID(yyvsp[-4])) << getHexChar(getRegisterID(yyvsp[-2])) << yyvsp[0];
 	instructions.push_back(instructionBuffer.str());
 	instructionBuffer.str(std::string());
 }
-#line 1471 "y.tab.c"
+#line 1472 "y.tab.c"
     break;
 
   case 47: /* memory_params: REGISTER COMMA INT LPAREN REGISTER RPAREN  */
-#line 140 "parser.y"
+#line 141 "parser.y"
                                                          {
 	instructionBuffer << getHexChar(getRegisterID(yyvsp[-1])) << getHexChar(getRegisterID(yyvsp[-5])) << getHexChar(atoi(yyvsp[-3].c_str()));
 	instructions.push_back(instructionBuffer.str());
 	instructionBuffer.str(std::string());
 }
-#line 1481 "y.tab.c"
+#line 1482 "y.tab.c"
     break;
 
   case 48: /* $@16: %empty  */
-#line 147 "parser.y"
+#line 148 "parser.y"
                        { instructionBuffer << getHexChar(getOpcodeID("sll")); }
-#line 1487 "y.tab.c"
+#line 1488 "y.tab.c"
     break;
 
   case 50: /* $@17: %empty  */
-#line 149 "parser.y"
+#line 150 "parser.y"
             { instructionBuffer << getHexChar(getOpcodeID("srl")); }
-#line 1493 "y.tab.c"
+#line 1494 "y.tab.c"
     break;
 
   case 52: /* $@18: %empty  */
-#line 152 "parser.y"
+#line 153 "parser.y"
                      { instructionBuffer << getHexChar(getOpcodeID("j")); }
-#line 1499 "y.tab.c"
+#line 1500 "y.tab.c"
     break;
 
   case 53: /* jtype_instruction: J $@18 LABEL  */
-#line 152 "parser.y"
+#line 153 "parser.y"
                                                                                   {
 	instructionBuffer << yyvsp[0];
 	instructions.push_back(instructionBuffer.str());
 	instructionBuffer.str(std::string());
 }
-#line 1509 "y.tab.c"
+#line 1510 "y.tab.c"
     break;
 
   case 54: /* push_instruction: PUSH REGISTER  */
-#line 159 "parser.y"
+#line 160 "parser.y"
                                 {
 	instructionBuffer << getHexChar(getOpcodeID("sw")) << getHexChar(getRegisterID("$sp")) << getHexChar(getRegisterID(yyvsp[0])) << "0";
 	instructions.push_back(instructionBuffer.str());
@@ -1521,11 +1522,11 @@ yyreduce:
 
 	++instructionCounter;
 }
-#line 1525 "y.tab.c"
+#line 1526 "y.tab.c"
     break;
 
   case 55: /* push_instruction: PUSH INT LPAREN REGISTER RPAREN  */
-#line 171 "parser.y"
+#line 172 "parser.y"
                                         {
 		instructionBuffer << getHexChar(getOpcodeID("lw")) << getHexChar(getRegisterID(yyvsp[-1])) << getHexChar(getRegisterID("$x0")) << getHexChar(atoi(yyvsp[-3].c_str()));
 		instructions.push_back(instructionBuffer.str());
@@ -1541,11 +1542,11 @@ yyreduce:
 
 		instructionCounter += 2;
 	}
-#line 1545 "y.tab.c"
+#line 1546 "y.tab.c"
     break;
 
   case 56: /* pop_instruction: POP REGISTER  */
-#line 188 "parser.y"
+#line 189 "parser.y"
                               {
 	instructionBuffer << getHexChar(getOpcodeID("addi")) << getHexChar(getRegisterID("$sp")) << getHexChar(getRegisterID("$sp")) << "1";
 	instructions.push_back(instructionBuffer.str());
@@ -1557,11 +1558,11 @@ yyreduce:
 
 	++instructionCounter;
 }
-#line 1561 "y.tab.c"
+#line 1562 "y.tab.c"
     break;
 
 
-#line 1565 "y.tab.c"
+#line 1566 "y.tab.c"
 
       default: break;
     }
@@ -1754,7 +1755,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 201 "parser.y"
+#line 202 "parser.y"
 
 
 int main(int argc, char **argv) {
@@ -1812,7 +1813,7 @@ int main(int argc, char **argv) {
 }
 
 void yyerror(const char *message) {
-	std::cout << "Syntax error: " << message << std::endl;
+	std::cout << "Syntax error at line " << yylineno << ": " << message << std::endl;
 }
 
 int getOpcodeID(std::string opcode) {

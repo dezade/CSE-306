@@ -13,6 +13,7 @@
 
 int yylex(void);
 extern FILE *yyin;
+extern int yylineno;
 void yyerror(const char *message);
 
 int getOpcodeID(std::string opcode);
@@ -255,7 +256,7 @@ int main(int argc, char **argv) {
 }
 
 void yyerror(const char *message) {
-	std::cout << "Syntax error: " << message << std::endl;
+	std::cout << "Syntax error at line " << yylineno << ": " << message << std::endl;
 }
 
 int getOpcodeID(std::string opcode) {

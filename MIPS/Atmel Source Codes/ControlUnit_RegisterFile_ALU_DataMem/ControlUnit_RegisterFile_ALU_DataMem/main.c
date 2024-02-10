@@ -11,7 +11,7 @@ int main(){
 	DDRB = 0x00; // higher 8 bits
 	DDRA = 0x00; // lower 8 bits
 	DDRC = 0x0F; // higher 4 bits -> address, lower 4 bits -> data
-	DDRD = 0b1000001; // D0 -> ZF , D7 -> clkout , D1 -> clkin,
+	DDRD = 0b10000001; // D0 -> ZF , D7 -> clkout , D1 -> clkin,
 	PORTD = 0x00;
 	// 0-4 normal
 	// 5 zero
@@ -97,10 +97,9 @@ int main(){
 			case 6 :
 			{
 				// bneq
-				if( reg[(maskh & 0x0F)] - reg[((maskl & 0xF0)>>4)] == 0 ){
+				if( reg[(maskh & 0x0F)] - reg[((maskl & 0xF0)>>4)] != 0 ){
 					///do something. send 0 flag
-					PORTD |= 0x01;
-					_delay_ms(1000);
+					PORTD &= 0xFE;
 				}
 				break;
 			}
@@ -153,7 +152,6 @@ int main(){
 				if( reg[(maskh & 0x0F)] - reg[((maskl & 0xF0)>>4)] == 0 ){
 					///do something. send 0 flag
 					PORTD |= 0x01;
-					_delay_ms(1000);
 				}
 				break;
 			}
@@ -175,7 +173,7 @@ int main(){
 			}
 		}
 		PORTD |= 0b10000000;
-		//_delay_ms(2);
+		_delay_ms(2);
 		PORTD = 0x00;
 	}
 }
