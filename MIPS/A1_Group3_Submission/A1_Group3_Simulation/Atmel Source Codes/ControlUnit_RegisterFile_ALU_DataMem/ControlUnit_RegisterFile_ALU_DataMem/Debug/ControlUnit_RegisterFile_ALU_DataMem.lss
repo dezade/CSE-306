@@ -1,0 +1,836 @@
+
+ControlUnit_RegisterFile_ALU_DataMem.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000004f6  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  0000054a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .comment      00000030  00000000  00000000  0000054a  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000057c  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  000005b8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   00000734  00000000  00000000  000005d8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 000005d0  00000000  00000000  00000d0c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000411  00000000  00000000  000012dc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000034  00000000  00000000  000016f0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000380  00000000  00000000  00001724  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000393  00000000  00000000  00001aa4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  00001e37  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 39 00 	jmp	0x72	; 0x72 <__ctors_end>
+   4:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+   8:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+   c:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  10:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  14:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  18:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  1c:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  20:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  24:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  28:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  2c:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  30:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  34:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  38:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  3c:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  40:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  44:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  48:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  4c:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  50:	0c 94 43 00 	jmp	0x86	; 0x86 <__bad_interrupt>
+  54:	8f 00       	.word	0x008f	; ????
+  56:	b2 00       	.word	0x00b2	; ????
+  58:	d1 00       	.word	0x00d1	; ????
+  5a:	f2 00       	.word	0x00f2	; ????
+  5c:	13 01       	movw	r2, r6
+  5e:	37 01       	movw	r6, r14
+  60:	52 01       	movw	r10, r4
+  62:	6f 01       	movw	r12, r30
+  64:	92 01       	movw	r18, r4
+  66:	ad 01       	movw	r20, r26
+  68:	d1 01       	movw	r26, r2
+  6a:	eb 01       	movw	r28, r22
+  6c:	0e 02       	muls	r16, r30
+  6e:	2a 02       	muls	r18, r26
+  70:	47 02       	muls	r20, r23
+
+00000072 <__ctors_end>:
+  72:	11 24       	eor	r1, r1
+  74:	1f be       	out	0x3f, r1	; 63
+  76:	cf e5       	ldi	r28, 0x5F	; 95
+  78:	d8 e0       	ldi	r29, 0x08	; 8
+  7a:	de bf       	out	0x3e, r29	; 62
+  7c:	cd bf       	out	0x3d, r28	; 61
+  7e:	0e 94 45 00 	call	0x8a	; 0x8a <main>
+  82:	0c 94 79 02 	jmp	0x4f2	; 0x4f2 <_exit>
+
+00000086 <__bad_interrupt>:
+  86:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000008a <main>:
+#define F_CPU 1000000
+#include<avr/io.h>
+#include <util/delay.h>
+#include <avr/interrupt.h>
+
+int main(){
+  8a:	cf 93       	push	r28
+  8c:	df 93       	push	r29
+  8e:	cd b7       	in	r28, 0x3d	; 61
+  90:	de b7       	in	r29, 0x3e	; 62
+  92:	68 97       	sbiw	r28, 0x18	; 24
+  94:	0f b6       	in	r0, 0x3f	; 63
+  96:	f8 94       	cli
+  98:	de bf       	out	0x3e, r29	; 62
+  9a:	0f be       	out	0x3f, r0	; 63
+  9c:	cd bf       	out	0x3d, r28	; 61
+	
+	MCUCSR|=(1<<JTD);
+  9e:	84 b7       	in	r24, 0x34	; 52
+  a0:	80 68       	ori	r24, 0x80	; 128
+  a2:	84 bf       	out	0x34, r24	; 52
+	MCUCSR|=(1<<JTD);
+  a4:	84 b7       	in	r24, 0x34	; 52
+  a6:	80 68       	ori	r24, 0x80	; 128
+  a8:	84 bf       	out	0x34, r24	; 52
+
+	DDRB = 0x00; // higher 8 bits
+  aa:	17 ba       	out	0x17, r1	; 23
+	DDRA = 0x00; // lower 8 bits
+  ac:	1a ba       	out	0x1a, r1	; 26
+	DDRC = 0x0F; // higher 4 bits -> address, lower 4 bits -> data
+  ae:	8f e0       	ldi	r24, 0x0F	; 15
+  b0:	84 bb       	out	0x14, r24	; 20
+	DDRD = 0b10000001; // D0 -> ZF , D7 -> clkout , D1 -> clkin,
+  b2:	91 e8       	ldi	r25, 0x81	; 129
+  b4:	91 bb       	out	0x11, r25	; 17
+	PORTD = 0x00;
+  b6:	12 ba       	out	0x12, r1	; 18
+	// 0-4 normal
+	// 5 zero
+	// 6 sp
+	unsigned char reg[8]= {0x00,0x00,0x00,0x00,0x00,0x00,0x0F,0x00};
+  b8:	fe 01       	movw	r30, r28
+  ba:	31 96       	adiw	r30, 0x01	; 1
+  bc:	98 e0       	ldi	r25, 0x08	; 8
+  be:	df 01       	movw	r26, r30
+  c0:	1d 92       	st	X+, r1
+  c2:	9a 95       	dec	r25
+  c4:	e9 f7       	brne	.-6      	; 0xc0 <main+0x36>
+  c6:	8f 83       	std	Y+7, r24	; 0x07
+	unsigned char data[16] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+  c8:	38 96       	adiw	r30, 0x08	; 8
+  ca:	80 e1       	ldi	r24, 0x10	; 16
+  cc:	df 01       	movw	r26, r30
+  ce:	1d 92       	st	X+, r1
+  d0:	8a 95       	dec	r24
+  d2:	e9 f7       	brne	.-6      	; 0xce <main+0x44>
+  d4:	0c c0       	rjmp	.+24     	; 0xee <main+0x64>
+	// }
+
+	while(1){
+		while(!(PIND & 0x02))
+		{
+			unsigned char address = (PINC & 0xF0) >> 4;
+  d6:	83 b3       	in	r24, 0x13	; 19
+  d8:	82 95       	swap	r24
+  da:	8f 70       	andi	r24, 0x0F	; 15
+			PORTC = reg[address] & 0x0F;
+  dc:	e1 e0       	ldi	r30, 0x01	; 1
+  de:	f0 e0       	ldi	r31, 0x00	; 0
+  e0:	ec 0f       	add	r30, r28
+  e2:	fd 1f       	adc	r31, r29
+  e4:	e8 0f       	add	r30, r24
+  e6:	f1 1d       	adc	r31, r1
+  e8:	80 81       	ld	r24, Z
+  ea:	8f 70       	andi	r24, 0x0F	; 15
+  ec:	85 bb       	out	0x15, r24	; 21
+	// {
+	//     mask |= (inp[i]<<i);
+	// }
+
+	while(1){
+		while(!(PIND & 0x02))
+  ee:	81 9b       	sbis	0x10, 1	; 16
+  f0:	f2 cf       	rjmp	.-28     	; 0xd6 <main+0x4c>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  f2:	83 ef       	ldi	r24, 0xF3	; 243
+  f4:	91 e0       	ldi	r25, 0x01	; 1
+  f6:	01 97       	sbiw	r24, 0x01	; 1
+  f8:	f1 f7       	brne	.-4      	; 0xf6 <main+0x6c>
+  fa:	00 c0       	rjmp	.+0      	; 0xfc <main+0x72>
+  fc:	00 00       	nop
+		{
+			unsigned char address = (PINC & 0xF0) >> 4;
+			PORTC = reg[address] & 0x0F;
+		}
+		_delay_ms(2);
+		unsigned char maskh = PINB;
+  fe:	26 b3       	in	r18, 0x16	; 22
+		unsigned char maskl = PINA;
+ 100:	39 b3       	in	r19, 0x19	; 25
+		unsigned char opcode = maskh;
+		opcode = (opcode >> 4);
+ 102:	e2 2f       	mov	r30, r18
+ 104:	e2 95       	swap	r30
+ 106:	ef 70       	andi	r30, 0x0F	; 15
+
+
+		switch(opcode){
+ 108:	8e 2f       	mov	r24, r30
+ 10a:	90 e0       	ldi	r25, 0x00	; 0
+ 10c:	8f 30       	cpi	r24, 0x0F	; 15
+ 10e:	91 05       	cpc	r25, r1
+ 110:	08 f0       	brcs	.+2      	; 0x114 <main+0x8a>
+ 112:	de c1       	rjmp	.+956    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 114:	fc 01       	movw	r30, r24
+ 116:	e6 5d       	subi	r30, 0xD6	; 214
+ 118:	ff 4f       	sbci	r31, 0xFF	; 255
+ 11a:	0c 94 73 02 	jmp	0x4e6	; 0x4e6 <__tablejump2__>
+			case 0 :
+			{
+				// sub
+				reg[(maskl & (0x0F))] = - reg[((maskl & 0xF0)>>4)] + reg[(maskh & 0x0F)];
+ 11e:	43 2f       	mov	r20, r19
+ 120:	4f 70       	andi	r20, 0x0F	; 15
+ 122:	2f 70       	andi	r18, 0x0F	; 15
+ 124:	e1 e0       	ldi	r30, 0x01	; 1
+ 126:	f0 e0       	ldi	r31, 0x00	; 0
+ 128:	ec 0f       	add	r30, r28
+ 12a:	fd 1f       	adc	r31, r29
+ 12c:	e2 0f       	add	r30, r18
+ 12e:	f1 1d       	adc	r31, r1
+ 130:	90 81       	ld	r25, Z
+ 132:	e3 2f       	mov	r30, r19
+ 134:	e2 95       	swap	r30
+ 136:	ef 70       	andi	r30, 0x0F	; 15
+ 138:	a1 e0       	ldi	r26, 0x01	; 1
+ 13a:	b0 e0       	ldi	r27, 0x00	; 0
+ 13c:	ac 0f       	add	r26, r28
+ 13e:	bd 1f       	adc	r27, r29
+ 140:	ae 0f       	add	r26, r30
+ 142:	b1 1d       	adc	r27, r1
+ 144:	fd 01       	movw	r30, r26
+ 146:	80 81       	ld	r24, Z
+ 148:	98 1b       	sub	r25, r24
+ 14a:	e1 e0       	ldi	r30, 0x01	; 1
+ 14c:	f0 e0       	ldi	r31, 0x00	; 0
+ 14e:	ec 0f       	add	r30, r28
+ 150:	fd 1f       	adc	r31, r29
+ 152:	e4 0f       	add	r30, r20
+ 154:	f1 1d       	adc	r31, r1
+ 156:	90 83       	st	Z, r25
+				if(reg[(maskl & (0x0F))] == 0 ) PORTD |= 0x01;
+ 158:	91 11       	cpse	r25, r1
+ 15a:	ba c1       	rjmp	.+884    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 15c:	82 b3       	in	r24, 0x12	; 18
+ 15e:	81 60       	ori	r24, 0x01	; 1
+ 160:	82 bb       	out	0x12, r24	; 18
+ 162:	b6 c1       	rjmp	.+876    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+			}
+			case 1:
+			{
+				// sw $t3, 5($t4)
+				
+				unsigned char src = maskh&0x0F;  //t4
+ 164:	2f 70       	andi	r18, 0x0F	; 15
+				unsigned char dest = maskl>>4;   //t3
+ 166:	83 2f       	mov	r24, r19
+ 168:	82 95       	swap	r24
+ 16a:	8f 70       	andi	r24, 0x0F	; 15
+				unsigned char offset = maskl & 0x0F;
+ 16c:	e3 2f       	mov	r30, r19
+ 16e:	ef 70       	andi	r30, 0x0F	; 15
+				
+				data[reg[src]+offset] = reg[dest];
+ 170:	a1 e0       	ldi	r26, 0x01	; 1
+ 172:	b0 e0       	ldi	r27, 0x00	; 0
+ 174:	ac 0f       	add	r26, r28
+ 176:	bd 1f       	adc	r27, r29
+ 178:	a2 0f       	add	r26, r18
+ 17a:	b1 1d       	adc	r27, r1
+ 17c:	9c 91       	ld	r25, X
+ 17e:	f0 e0       	ldi	r31, 0x00	; 0
+ 180:	e9 0f       	add	r30, r25
+ 182:	f1 1d       	adc	r31, r1
+ 184:	a1 e0       	ldi	r26, 0x01	; 1
+ 186:	b0 e0       	ldi	r27, 0x00	; 0
+ 188:	ac 0f       	add	r26, r28
+ 18a:	bd 1f       	adc	r27, r29
+ 18c:	a8 0f       	add	r26, r24
+ 18e:	b1 1d       	adc	r27, r1
+ 190:	8c 91       	ld	r24, X
+ 192:	29 e0       	ldi	r18, 0x09	; 9
+ 194:	30 e0       	ldi	r19, 0x00	; 0
+ 196:	2c 0f       	add	r18, r28
+ 198:	3d 1f       	adc	r19, r29
+ 19a:	e2 0f       	add	r30, r18
+ 19c:	f3 1f       	adc	r31, r19
+ 19e:	80 83       	st	Z, r24
+
+				break;
+ 1a0:	97 c1       	rjmp	.+814    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+			}
+			case 2 :
+			{
+				// sll
+				reg[((maskl & 0xF0)>>4)] = reg[(maskh & 0x0F)] << (maskl & 0x0F);
+ 1a2:	43 2f       	mov	r20, r19
+ 1a4:	42 95       	swap	r20
+ 1a6:	4f 70       	andi	r20, 0x0F	; 15
+ 1a8:	2f 70       	andi	r18, 0x0F	; 15
+ 1aa:	e1 e0       	ldi	r30, 0x01	; 1
+ 1ac:	f0 e0       	ldi	r31, 0x00	; 0
+ 1ae:	ec 0f       	add	r30, r28
+ 1b0:	fd 1f       	adc	r31, r29
+ 1b2:	e2 0f       	add	r30, r18
+ 1b4:	f1 1d       	adc	r31, r1
+ 1b6:	20 81       	ld	r18, Z
+ 1b8:	e3 2f       	mov	r30, r19
+ 1ba:	ef 70       	andi	r30, 0x0F	; 15
+ 1bc:	30 e0       	ldi	r19, 0x00	; 0
+ 1be:	c9 01       	movw	r24, r18
+ 1c0:	02 c0       	rjmp	.+4      	; 0x1c6 <main+0x13c>
+ 1c2:	88 0f       	add	r24, r24
+ 1c4:	99 1f       	adc	r25, r25
+ 1c6:	ea 95       	dec	r30
+ 1c8:	e2 f7       	brpl	.-8      	; 0x1c2 <main+0x138>
+ 1ca:	e1 e0       	ldi	r30, 0x01	; 1
+ 1cc:	f0 e0       	ldi	r31, 0x00	; 0
+ 1ce:	ec 0f       	add	r30, r28
+ 1d0:	fd 1f       	adc	r31, r29
+ 1d2:	e4 0f       	add	r30, r20
+ 1d4:	f1 1d       	adc	r31, r1
+ 1d6:	80 83       	st	Z, r24
+				if(reg[((maskl & 0xF0)>>4)] == 0 ) PORTD |= 0x01;
+ 1d8:	81 11       	cpse	r24, r1
+ 1da:	7a c1       	rjmp	.+756    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 1dc:	82 b3       	in	r24, 0x12	; 18
+ 1de:	81 60       	ori	r24, 0x01	; 1
+ 1e0:	82 bb       	out	0x12, r24	; 18
+ 1e2:	76 c1       	rjmp	.+748    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 3 :
+			{
+				// srl
+				reg[((maskl & 0xF0)>>4)] = reg[(maskh & 0x0F)] >> (maskl & 0x0F);
+ 1e4:	43 2f       	mov	r20, r19
+ 1e6:	42 95       	swap	r20
+ 1e8:	4f 70       	andi	r20, 0x0F	; 15
+ 1ea:	2f 70       	andi	r18, 0x0F	; 15
+ 1ec:	e1 e0       	ldi	r30, 0x01	; 1
+ 1ee:	f0 e0       	ldi	r31, 0x00	; 0
+ 1f0:	ec 0f       	add	r30, r28
+ 1f2:	fd 1f       	adc	r31, r29
+ 1f4:	e2 0f       	add	r30, r18
+ 1f6:	f1 1d       	adc	r31, r1
+ 1f8:	20 81       	ld	r18, Z
+ 1fa:	e3 2f       	mov	r30, r19
+ 1fc:	ef 70       	andi	r30, 0x0F	; 15
+ 1fe:	30 e0       	ldi	r19, 0x00	; 0
+ 200:	c9 01       	movw	r24, r18
+ 202:	02 c0       	rjmp	.+4      	; 0x208 <main+0x17e>
+ 204:	95 95       	asr	r25
+ 206:	87 95       	ror	r24
+ 208:	ea 95       	dec	r30
+ 20a:	e2 f7       	brpl	.-8      	; 0x204 <main+0x17a>
+ 20c:	e1 e0       	ldi	r30, 0x01	; 1
+ 20e:	f0 e0       	ldi	r31, 0x00	; 0
+ 210:	ec 0f       	add	r30, r28
+ 212:	fd 1f       	adc	r31, r29
+ 214:	e4 0f       	add	r30, r20
+ 216:	f1 1d       	adc	r31, r1
+ 218:	80 83       	st	Z, r24
+				if(reg[((maskl & 0xF0)>>4)] == 0 ) PORTD |= 0x01;
+ 21a:	81 11       	cpse	r24, r1
+ 21c:	59 c1       	rjmp	.+690    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 21e:	82 b3       	in	r24, 0x12	; 18
+ 220:	81 60       	ori	r24, 0x01	; 1
+ 222:	82 bb       	out	0x12, r24	; 18
+ 224:	55 c1       	rjmp	.+682    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 4 :
+			{
+				// lw $t3, 5($t4)
+				unsigned char src = maskh&0x0F;  //t4
+ 226:	2f 70       	andi	r18, 0x0F	; 15
+				unsigned char dest = maskl>>4;   //t3
+ 228:	93 2f       	mov	r25, r19
+ 22a:	92 95       	swap	r25
+ 22c:	9f 70       	andi	r25, 0x0F	; 15
+				unsigned char offset = maskl & 0x0F;
+ 22e:	e3 2f       	mov	r30, r19
+ 230:	ef 70       	andi	r30, 0x0F	; 15
+				
+				reg[dest]=data[reg[src]+offset] ;
+ 232:	a1 e0       	ldi	r26, 0x01	; 1
+ 234:	b0 e0       	ldi	r27, 0x00	; 0
+ 236:	ac 0f       	add	r26, r28
+ 238:	bd 1f       	adc	r27, r29
+ 23a:	a2 0f       	add	r26, r18
+ 23c:	b1 1d       	adc	r27, r1
+ 23e:	8c 91       	ld	r24, X
+ 240:	f0 e0       	ldi	r31, 0x00	; 0
+ 242:	e8 0f       	add	r30, r24
+ 244:	f1 1d       	adc	r31, r1
+ 246:	49 e0       	ldi	r20, 0x09	; 9
+ 248:	50 e0       	ldi	r21, 0x00	; 0
+ 24a:	4c 0f       	add	r20, r28
+ 24c:	5d 1f       	adc	r21, r29
+ 24e:	e4 0f       	add	r30, r20
+ 250:	f5 1f       	adc	r31, r21
+ 252:	80 81       	ld	r24, Z
+ 254:	e1 e0       	ldi	r30, 0x01	; 1
+ 256:	f0 e0       	ldi	r31, 0x00	; 0
+ 258:	ec 0f       	add	r30, r28
+ 25a:	fd 1f       	adc	r31, r29
+ 25c:	e9 0f       	add	r30, r25
+ 25e:	f1 1d       	adc	r31, r1
+ 260:	80 83       	st	Z, r24
+				if(reg[dest] == 0 ) PORTD |= 0x01;
+ 262:	81 11       	cpse	r24, r1
+ 264:	35 c1       	rjmp	.+618    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 266:	82 b3       	in	r24, 0x12	; 18
+ 268:	81 60       	ori	r24, 0x01	; 1
+ 26a:	82 bb       	out	0x12, r24	; 18
+ 26c:	31 c1       	rjmp	.+610    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 5 :
+			{
+				// ori
+				reg[((maskl & 0xF0)>>4)] = reg[(maskh & 0x0F)] | (maskl & 0x0F);
+ 26e:	43 2f       	mov	r20, r19
+ 270:	42 95       	swap	r20
+ 272:	4f 70       	andi	r20, 0x0F	; 15
+ 274:	2f 70       	andi	r18, 0x0F	; 15
+ 276:	e1 e0       	ldi	r30, 0x01	; 1
+ 278:	f0 e0       	ldi	r31, 0x00	; 0
+ 27a:	ec 0f       	add	r30, r28
+ 27c:	fd 1f       	adc	r31, r29
+ 27e:	e2 0f       	add	r30, r18
+ 280:	f1 1d       	adc	r31, r1
+ 282:	90 81       	ld	r25, Z
+ 284:	e3 2f       	mov	r30, r19
+ 286:	ef 70       	andi	r30, 0x0F	; 15
+ 288:	e9 2b       	or	r30, r25
+ 28a:	a1 e0       	ldi	r26, 0x01	; 1
+ 28c:	b0 e0       	ldi	r27, 0x00	; 0
+ 28e:	ac 0f       	add	r26, r28
+ 290:	bd 1f       	adc	r27, r29
+ 292:	a4 0f       	add	r26, r20
+ 294:	b1 1d       	adc	r27, r1
+ 296:	ec 93       	st	X, r30
+				if(reg[((maskl & 0xF0)>>4)] == 0 ) PORTD |= 0x01;
+ 298:	e1 11       	cpse	r30, r1
+ 29a:	1a c1       	rjmp	.+564    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 29c:	82 b3       	in	r24, 0x12	; 18
+ 29e:	81 60       	ori	r24, 0x01	; 1
+ 2a0:	82 bb       	out	0x12, r24	; 18
+ 2a2:	16 c1       	rjmp	.+556    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 6 :
+			{
+				// bneq
+				if( reg[(maskh & 0x0F)] - reg[((maskl & 0xF0)>>4)] != 0 ){
+ 2a4:	2f 70       	andi	r18, 0x0F	; 15
+ 2a6:	e1 e0       	ldi	r30, 0x01	; 1
+ 2a8:	f0 e0       	ldi	r31, 0x00	; 0
+ 2aa:	ec 0f       	add	r30, r28
+ 2ac:	fd 1f       	adc	r31, r29
+ 2ae:	e2 0f       	add	r30, r18
+ 2b0:	f1 1d       	adc	r31, r1
+ 2b2:	90 81       	ld	r25, Z
+ 2b4:	e3 2f       	mov	r30, r19
+ 2b6:	e2 95       	swap	r30
+ 2b8:	ef 70       	andi	r30, 0x0F	; 15
+ 2ba:	a1 e0       	ldi	r26, 0x01	; 1
+ 2bc:	b0 e0       	ldi	r27, 0x00	; 0
+ 2be:	ac 0f       	add	r26, r28
+ 2c0:	bd 1f       	adc	r27, r29
+ 2c2:	ae 0f       	add	r26, r30
+ 2c4:	b1 1d       	adc	r27, r1
+ 2c6:	fd 01       	movw	r30, r26
+ 2c8:	80 81       	ld	r24, Z
+ 2ca:	98 17       	cp	r25, r24
+ 2cc:	21 f0       	breq	.+8      	; 0x2d6 <main+0x24c>
+					///do something. send 0 flag
+					PORTD &= 0xFE;
+ 2ce:	82 b3       	in	r24, 0x12	; 18
+ 2d0:	8e 7f       	andi	r24, 0xFE	; 254
+ 2d2:	82 bb       	out	0x12, r24	; 18
+ 2d4:	fd c0       	rjmp	.+506    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				}
+				else
+				{
+					PORTD |= 0x01;
+ 2d6:	82 b3       	in	r24, 0x12	; 18
+ 2d8:	81 60       	ori	r24, 0x01	; 1
+ 2da:	82 bb       	out	0x12, r24	; 18
+ 2dc:	f9 c0       	rjmp	.+498    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 7 :
+			{
+				// AND
+				reg[(maskl & (0x0F))] = reg[((maskl & 0xF0)>>4)] & reg[(maskh & 0x0F)];
+ 2de:	93 2f       	mov	r25, r19
+ 2e0:	9f 70       	andi	r25, 0x0F	; 15
+ 2e2:	e3 2f       	mov	r30, r19
+ 2e4:	e2 95       	swap	r30
+ 2e6:	ef 70       	andi	r30, 0x0F	; 15
+ 2e8:	41 e0       	ldi	r20, 0x01	; 1
+ 2ea:	50 e0       	ldi	r21, 0x00	; 0
+ 2ec:	4c 0f       	add	r20, r28
+ 2ee:	5d 1f       	adc	r21, r29
+ 2f0:	4e 0f       	add	r20, r30
+ 2f2:	51 1d       	adc	r21, r1
+ 2f4:	fa 01       	movw	r30, r20
+ 2f6:	30 81       	ld	r19, Z
+ 2f8:	2f 70       	andi	r18, 0x0F	; 15
+ 2fa:	e1 e0       	ldi	r30, 0x01	; 1
+ 2fc:	f0 e0       	ldi	r31, 0x00	; 0
+ 2fe:	ec 0f       	add	r30, r28
+ 300:	fd 1f       	adc	r31, r29
+ 302:	e2 0f       	add	r30, r18
+ 304:	f1 1d       	adc	r31, r1
+ 306:	80 81       	ld	r24, Z
+ 308:	83 23       	and	r24, r19
+ 30a:	e1 e0       	ldi	r30, 0x01	; 1
+ 30c:	f0 e0       	ldi	r31, 0x00	; 0
+ 30e:	ec 0f       	add	r30, r28
+ 310:	fd 1f       	adc	r31, r29
+ 312:	e9 0f       	add	r30, r25
+ 314:	f1 1d       	adc	r31, r1
+ 316:	80 83       	st	Z, r24
+				if(reg[(maskl & (0x0F))] == 0 ) PORTD |= 0x01;
+ 318:	81 11       	cpse	r24, r1
+ 31a:	da c0       	rjmp	.+436    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 31c:	82 b3       	in	r24, 0x12	; 18
+ 31e:	81 60       	ori	r24, 0x01	; 1
+ 320:	82 bb       	out	0x12, r24	; 18
+ 322:	d6 c0       	rjmp	.+428    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 8 :
+			{
+				// addi
+				reg[((maskl & 0xF0)>>4)] = reg[(maskh & 0x0F)] + (maskl & 0x0F);
+ 324:	43 2f       	mov	r20, r19
+ 326:	42 95       	swap	r20
+ 328:	4f 70       	andi	r20, 0x0F	; 15
+ 32a:	2f 70       	andi	r18, 0x0F	; 15
+ 32c:	e1 e0       	ldi	r30, 0x01	; 1
+ 32e:	f0 e0       	ldi	r31, 0x00	; 0
+ 330:	ec 0f       	add	r30, r28
+ 332:	fd 1f       	adc	r31, r29
+ 334:	e2 0f       	add	r30, r18
+ 336:	f1 1d       	adc	r31, r1
+ 338:	90 81       	ld	r25, Z
+ 33a:	e3 2f       	mov	r30, r19
+ 33c:	ef 70       	andi	r30, 0x0F	; 15
+ 33e:	e9 0f       	add	r30, r25
+ 340:	a1 e0       	ldi	r26, 0x01	; 1
+ 342:	b0 e0       	ldi	r27, 0x00	; 0
+ 344:	ac 0f       	add	r26, r28
+ 346:	bd 1f       	adc	r27, r29
+ 348:	a4 0f       	add	r26, r20
+ 34a:	b1 1d       	adc	r27, r1
+ 34c:	ec 93       	st	X, r30
+				if(reg[((maskl & 0xF0)>>4)] == 0 ) PORTD |= 0x01;
+ 34e:	e1 11       	cpse	r30, r1
+ 350:	bf c0       	rjmp	.+382    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 352:	82 b3       	in	r24, 0x12	; 18
+ 354:	81 60       	ori	r24, 0x01	; 1
+ 356:	82 bb       	out	0x12, r24	; 18
+ 358:	bb c0       	rjmp	.+374    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 9 :
+			{
+				// NOR
+				reg[(maskl & (0x0F))] = ~(reg[((maskl & 0xF0)>>4)] | reg[(maskh & 0x0F)]);
+ 35a:	93 2f       	mov	r25, r19
+ 35c:	9f 70       	andi	r25, 0x0F	; 15
+ 35e:	e3 2f       	mov	r30, r19
+ 360:	e2 95       	swap	r30
+ 362:	ef 70       	andi	r30, 0x0F	; 15
+ 364:	a1 e0       	ldi	r26, 0x01	; 1
+ 366:	b0 e0       	ldi	r27, 0x00	; 0
+ 368:	ac 0f       	add	r26, r28
+ 36a:	bd 1f       	adc	r27, r29
+ 36c:	ae 0f       	add	r26, r30
+ 36e:	b1 1d       	adc	r27, r1
+ 370:	fd 01       	movw	r30, r26
+ 372:	30 81       	ld	r19, Z
+ 374:	2f 70       	andi	r18, 0x0F	; 15
+ 376:	e1 e0       	ldi	r30, 0x01	; 1
+ 378:	f0 e0       	ldi	r31, 0x00	; 0
+ 37a:	ec 0f       	add	r30, r28
+ 37c:	fd 1f       	adc	r31, r29
+ 37e:	e2 0f       	add	r30, r18
+ 380:	f1 1d       	adc	r31, r1
+ 382:	80 81       	ld	r24, Z
+ 384:	83 2b       	or	r24, r19
+ 386:	80 95       	com	r24
+ 388:	e1 e0       	ldi	r30, 0x01	; 1
+ 38a:	f0 e0       	ldi	r31, 0x00	; 0
+ 38c:	ec 0f       	add	r30, r28
+ 38e:	fd 1f       	adc	r31, r29
+ 390:	e9 0f       	add	r30, r25
+ 392:	f1 1d       	adc	r31, r1
+ 394:	80 83       	st	Z, r24
+				if(reg[(maskl & (0x0F))] == 0 ) PORTD |= 0x01;
+ 396:	81 11       	cpse	r24, r1
+ 398:	9b c0       	rjmp	.+310    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 39a:	82 b3       	in	r24, 0x12	; 18
+ 39c:	81 60       	ori	r24, 0x01	; 1
+ 39e:	82 bb       	out	0x12, r24	; 18
+ 3a0:	97 c0       	rjmp	.+302    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 10 :
+			{
+				// andi
+				reg[((maskl & 0xF0)>>4)] = reg[(maskh & 0x0F)] & (maskl & 0x0F);
+ 3a2:	83 2f       	mov	r24, r19
+ 3a4:	82 95       	swap	r24
+ 3a6:	8f 70       	andi	r24, 0x0F	; 15
+ 3a8:	2f 70       	andi	r18, 0x0F	; 15
+ 3aa:	e1 e0       	ldi	r30, 0x01	; 1
+ 3ac:	f0 e0       	ldi	r31, 0x00	; 0
+ 3ae:	ec 0f       	add	r30, r28
+ 3b0:	fd 1f       	adc	r31, r29
+ 3b2:	e2 0f       	add	r30, r18
+ 3b4:	f1 1d       	adc	r31, r1
+ 3b6:	e0 81       	ld	r30, Z
+ 3b8:	e3 23       	and	r30, r19
+ 3ba:	ef 70       	andi	r30, 0x0F	; 15
+ 3bc:	a1 e0       	ldi	r26, 0x01	; 1
+ 3be:	b0 e0       	ldi	r27, 0x00	; 0
+ 3c0:	ac 0f       	add	r26, r28
+ 3c2:	bd 1f       	adc	r27, r29
+ 3c4:	a8 0f       	add	r26, r24
+ 3c6:	b1 1d       	adc	r27, r1
+ 3c8:	ec 93       	st	X, r30
+				if(reg[((maskl & 0xF0)>>4)] == 0 ) PORTD |= 0x01;
+ 3ca:	e1 11       	cpse	r30, r1
+ 3cc:	81 c0       	rjmp	.+258    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 3ce:	82 b3       	in	r24, 0x12	; 18
+ 3d0:	81 60       	ori	r24, 0x01	; 1
+ 3d2:	82 bb       	out	0x12, r24	; 18
+ 3d4:	7d c0       	rjmp	.+250    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 11:
+			{
+				// OR
+				reg[(maskl & (0x0F))] = reg[((maskl & 0xF0)>>4)] | reg[(maskh & 0x0F)];
+ 3d6:	93 2f       	mov	r25, r19
+ 3d8:	9f 70       	andi	r25, 0x0F	; 15
+ 3da:	e3 2f       	mov	r30, r19
+ 3dc:	e2 95       	swap	r30
+ 3de:	ef 70       	andi	r30, 0x0F	; 15
+ 3e0:	41 e0       	ldi	r20, 0x01	; 1
+ 3e2:	50 e0       	ldi	r21, 0x00	; 0
+ 3e4:	4c 0f       	add	r20, r28
+ 3e6:	5d 1f       	adc	r21, r29
+ 3e8:	4e 0f       	add	r20, r30
+ 3ea:	51 1d       	adc	r21, r1
+ 3ec:	fa 01       	movw	r30, r20
+ 3ee:	30 81       	ld	r19, Z
+ 3f0:	2f 70       	andi	r18, 0x0F	; 15
+ 3f2:	e1 e0       	ldi	r30, 0x01	; 1
+ 3f4:	f0 e0       	ldi	r31, 0x00	; 0
+ 3f6:	ec 0f       	add	r30, r28
+ 3f8:	fd 1f       	adc	r31, r29
+ 3fa:	e2 0f       	add	r30, r18
+ 3fc:	f1 1d       	adc	r31, r1
+ 3fe:	80 81       	ld	r24, Z
+ 400:	83 2b       	or	r24, r19
+ 402:	e1 e0       	ldi	r30, 0x01	; 1
+ 404:	f0 e0       	ldi	r31, 0x00	; 0
+ 406:	ec 0f       	add	r30, r28
+ 408:	fd 1f       	adc	r31, r29
+ 40a:	e9 0f       	add	r30, r25
+ 40c:	f1 1d       	adc	r31, r1
+ 40e:	80 83       	st	Z, r24
+				if(reg[(maskl & (0x0F))] == 0 ) PORTD |= 0x01;
+ 410:	81 11       	cpse	r24, r1
+ 412:	5e c0       	rjmp	.+188    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 414:	82 b3       	in	r24, 0x12	; 18
+ 416:	81 60       	ori	r24, 0x01	; 1
+ 418:	82 bb       	out	0x12, r24	; 18
+ 41a:	5a c0       	rjmp	.+180    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 12 :
+			{
+				// subi
+				reg[((maskl & 0xF0)>>4)] = reg[(maskh & 0x0F)] - (maskl & 0x0F);
+ 41c:	43 2f       	mov	r20, r19
+ 41e:	42 95       	swap	r20
+ 420:	4f 70       	andi	r20, 0x0F	; 15
+ 422:	2f 70       	andi	r18, 0x0F	; 15
+ 424:	e1 e0       	ldi	r30, 0x01	; 1
+ 426:	f0 e0       	ldi	r31, 0x00	; 0
+ 428:	ec 0f       	add	r30, r28
+ 42a:	fd 1f       	adc	r31, r29
+ 42c:	e2 0f       	add	r30, r18
+ 42e:	f1 1d       	adc	r31, r1
+ 430:	90 81       	ld	r25, Z
+ 432:	e3 2f       	mov	r30, r19
+ 434:	ef 70       	andi	r30, 0x0F	; 15
+ 436:	89 2f       	mov	r24, r25
+ 438:	8e 1b       	sub	r24, r30
+ 43a:	e1 e0       	ldi	r30, 0x01	; 1
+ 43c:	f0 e0       	ldi	r31, 0x00	; 0
+ 43e:	ec 0f       	add	r30, r28
+ 440:	fd 1f       	adc	r31, r29
+ 442:	e4 0f       	add	r30, r20
+ 444:	f1 1d       	adc	r31, r1
+ 446:	80 83       	st	Z, r24
+				if(reg[((maskl & 0xF0)>>4)] == 0 ) PORTD |= 0x01;
+ 448:	81 11       	cpse	r24, r1
+ 44a:	42 c0       	rjmp	.+132    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 44c:	82 b3       	in	r24, 0x12	; 18
+ 44e:	81 60       	ori	r24, 0x01	; 1
+ 450:	82 bb       	out	0x12, r24	; 18
+ 452:	3e c0       	rjmp	.+124    	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 13 :
+			{
+				// beq
+				if( reg[(maskh & 0x0F)] - reg[((maskl & 0xF0)>>4)] == 0 ){
+ 454:	2f 70       	andi	r18, 0x0F	; 15
+ 456:	e1 e0       	ldi	r30, 0x01	; 1
+ 458:	f0 e0       	ldi	r31, 0x00	; 0
+ 45a:	ec 0f       	add	r30, r28
+ 45c:	fd 1f       	adc	r31, r29
+ 45e:	e2 0f       	add	r30, r18
+ 460:	f1 1d       	adc	r31, r1
+ 462:	90 81       	ld	r25, Z
+ 464:	e3 2f       	mov	r30, r19
+ 466:	e2 95       	swap	r30
+ 468:	ef 70       	andi	r30, 0x0F	; 15
+ 46a:	a1 e0       	ldi	r26, 0x01	; 1
+ 46c:	b0 e0       	ldi	r27, 0x00	; 0
+ 46e:	ac 0f       	add	r26, r28
+ 470:	bd 1f       	adc	r27, r29
+ 472:	ae 0f       	add	r26, r30
+ 474:	b1 1d       	adc	r27, r1
+ 476:	fd 01       	movw	r30, r26
+ 478:	80 81       	ld	r24, Z
+ 47a:	98 13       	cpse	r25, r24
+ 47c:	04 c0       	rjmp	.+8      	; 0x486 <__EEPROM_REGION_LENGTH__+0x86>
+					///do something. send 0 flag
+					PORTD |= 0x01;
+ 47e:	82 b3       	in	r24, 0x12	; 18
+ 480:	81 60       	ori	r24, 0x01	; 1
+ 482:	82 bb       	out	0x12, r24	; 18
+ 484:	25 c0       	rjmp	.+74     	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				}
+				else
+				{
+					PORTD &= 0xFE;
+ 486:	82 b3       	in	r24, 0x12	; 18
+ 488:	8e 7f       	andi	r24, 0xFE	; 254
+ 48a:	82 bb       	out	0x12, r24	; 18
+ 48c:	21 c0       	rjmp	.+66     	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+				break;
+			}
+			case 14 :
+			{
+				// add
+				reg[(maskl & (0x0F))] = reg[((maskl & 0xF0)>>4)] + reg[(maskh & 0x0F)];
+ 48e:	93 2f       	mov	r25, r19
+ 490:	9f 70       	andi	r25, 0x0F	; 15
+ 492:	83 2f       	mov	r24, r19
+ 494:	82 95       	swap	r24
+ 496:	8f 70       	andi	r24, 0x0F	; 15
+ 498:	e1 e0       	ldi	r30, 0x01	; 1
+ 49a:	f0 e0       	ldi	r31, 0x00	; 0
+ 49c:	ec 0f       	add	r30, r28
+ 49e:	fd 1f       	adc	r31, r29
+ 4a0:	e8 0f       	add	r30, r24
+ 4a2:	f1 1d       	adc	r31, r1
+ 4a4:	30 81       	ld	r19, Z
+ 4a6:	2f 70       	andi	r18, 0x0F	; 15
+ 4a8:	e1 e0       	ldi	r30, 0x01	; 1
+ 4aa:	f0 e0       	ldi	r31, 0x00	; 0
+ 4ac:	ec 0f       	add	r30, r28
+ 4ae:	fd 1f       	adc	r31, r29
+ 4b0:	e2 0f       	add	r30, r18
+ 4b2:	f1 1d       	adc	r31, r1
+ 4b4:	80 81       	ld	r24, Z
+ 4b6:	83 0f       	add	r24, r19
+ 4b8:	e1 e0       	ldi	r30, 0x01	; 1
+ 4ba:	f0 e0       	ldi	r31, 0x00	; 0
+ 4bc:	ec 0f       	add	r30, r28
+ 4be:	fd 1f       	adc	r31, r29
+ 4c0:	e9 0f       	add	r30, r25
+ 4c2:	f1 1d       	adc	r31, r1
+ 4c4:	80 83       	st	Z, r24
+				if(reg[(maskl & (0x0F))] == 0 ) PORTD |= 0x01;
+ 4c6:	81 11       	cpse	r24, r1
+ 4c8:	03 c0       	rjmp	.+6      	; 0x4d0 <__EEPROM_REGION_LENGTH__+0xd0>
+ 4ca:	82 b3       	in	r24, 0x12	; 18
+ 4cc:	81 60       	ori	r24, 0x01	; 1
+ 4ce:	82 bb       	out	0x12, r24	; 18
+			default :
+			{
+				break;
+			}
+		}
+		PORTD |= 0b10000000;
+ 4d0:	82 b3       	in	r24, 0x12	; 18
+ 4d2:	80 68       	ori	r24, 0x80	; 128
+ 4d4:	82 bb       	out	0x12, r24	; 18
+ 4d6:	83 ef       	ldi	r24, 0xF3	; 243
+ 4d8:	91 e0       	ldi	r25, 0x01	; 1
+ 4da:	01 97       	sbiw	r24, 0x01	; 1
+ 4dc:	f1 f7       	brne	.-4      	; 0x4da <__EEPROM_REGION_LENGTH__+0xda>
+ 4de:	00 c0       	rjmp	.+0      	; 0x4e0 <__EEPROM_REGION_LENGTH__+0xe0>
+ 4e0:	00 00       	nop
+		_delay_ms(2);
+		PORTD = 0x00;
+ 4e2:	12 ba       	out	0x12, r1	; 18
+	}
+ 4e4:	04 ce       	rjmp	.-1016   	; 0xee <main+0x64>
+
+000004e6 <__tablejump2__>:
+ 4e6:	ee 0f       	add	r30, r30
+ 4e8:	ff 1f       	adc	r31, r31
+ 4ea:	05 90       	lpm	r0, Z+
+ 4ec:	f4 91       	lpm	r31, Z
+ 4ee:	e0 2d       	mov	r30, r0
+ 4f0:	09 94       	ijmp
+
+000004f2 <_exit>:
+ 4f2:	f8 94       	cli
+
+000004f4 <__stop_program>:
+ 4f4:	ff cf       	rjmp	.-2      	; 0x4f4 <__stop_program>
