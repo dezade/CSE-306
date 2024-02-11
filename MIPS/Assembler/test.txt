@@ -28,11 +28,11 @@ addi $t0, $zero, 4;
 addi $t1, $zero, 2;
 beq $t0, $t1, L1;
 addi $t3, $zero, 4;
+addi $t2, $zero, 0;
 beq $t0, $t3, L1;
 addi $t2, $zero, 9;
 addi $t2, $t2, 1;
 L1:
-addi $t2, $zero, 0;
 addi $t2, $t2, 1;
 bneq $t2, $t0, L1;
 subi $t2, $t2, 2;

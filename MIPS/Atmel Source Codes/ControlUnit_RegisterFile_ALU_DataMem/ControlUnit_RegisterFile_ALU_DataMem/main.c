@@ -101,6 +101,10 @@ int main(){
 					///do something. send 0 flag
 					PORTD &= 0xFE;
 				}
+				else
+				{
+					PORTD |= 0x01;
+				}
 				break;
 			}
 			case 7 :
@@ -152,6 +156,10 @@ int main(){
 				if( reg[(maskh & 0x0F)] - reg[((maskl & 0xF0)>>4)] == 0 ){
 					///do something. send 0 flag
 					PORTD |= 0x01;
+				}
+				else
+				{
+					PORTD &= 0xFE;
 				}
 				break;
 			}
